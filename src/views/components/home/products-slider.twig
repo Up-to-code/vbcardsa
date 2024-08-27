@@ -1,43 +1,68 @@
-{#
-| Variable        | Type      | Description                                                      |
+{# | Variable | Type | Description |
 |-----------------|-----------|------------------------------------------------------------------|
-| products        | Product[] | List of products                                                 |
-| title           | string    | Section title                                                    |
-| display_all_url | ?string   | If it's existed, mean should show load more link to this url     |
-| position        | Int       | Sorting number start from zero                                   |
-#}
+| products | Product[] | List of products | | title | string | Section title | |
+display_all_url | ?string | If it exists, it means you should show a "load more"
+link to this URL | | position | int | Sorting number starting from zero | #}
 
-<section id="best-offers-{{ position }}-slider" class="s-block s-block--best-offers container overflow-hidden">
-
- 
-    <div>
-        {% if display_all_url %}
-            <a href="{{ display_all_url }}">{{ trans('blocks.home.display_all') }}</a>
-        {% endif %}
-        <div>
-            <button aria-label="Previous Slide"></button>
-            <button aria-label="Next Slide"></button>
-        </div>
-    </div>
-    <div data-id="{{ type }}-slider">
-        {% for product in products %}
-            <a href="{{ product.url }}">
-                <img src="{{ product.image.url }}" alt="{{ product.image.alt }}"/>
-                {% if product.promotion_title %} {{ product.promotion_title }} {% endif %}
-            </a>
-            <h3>
-                <a href="{{ product.url }}">{{ product.name }}</a>
-            </h3>
-            {% if product.on_sale %}
-                <div>
-                    <h4>{{ product.sale_price|money }}</h4>
-                    {{ product.regular_price|money }}
-                </div>
-            {% else %}
-                <h4>{{ product.price|money }}</h4>
-            {% endif %}
-        {% endfor %}
-    </div>
+<section
+  id="best-offers-{{ position }}-slider"
+  class="s-block s-block--best-offers container overflow-hidden"
+>
+  <div class="header flex justify-between items-center">
+    <h2>{{ title }}</h2>
+    {% if display_all_url %}
+    <a href="{{ display_all_url }}" class="text-primary">{{
+      trans("blocks.home.display_all")
+    }}</a>
     {% endif %}
+  </div>
+
+  <div class="slider-controls flex justify-end space-x-2 mt-2">
+    <button
+      aria-label="Previous Slide"
+      class="btn-slider-control prev-slide"
+    ></button>
+    <button
+      aria-label="Next Slide"
+      class="btn-slider-control next-slide"
+    ></button>
+  </div>
+
+  <div class="products-slider" data-id="{{ type }}-slider">
+    {% for product in products %}
+    <div class="product-card">
+      <a href="{{ product.url }}" class="product-image">
+        <img
+          src="{{ product.image.url }}"
+          alt="{{ product.image.alt }}"
+          loading="lazy"
+        />
+        {% if product.promotion_title %}
+        <span class="product-promotion">{{ product.promotion_title }}</span>
+        {% endif %}
+      </a>
+      <h3 class="product-title">
+        <a href="{{ product.url }}">{{ product.name }}</a>
+      </h3>
+      <div class="product-price">
+        {% if product.on_sale %}
+        <h4 class="sale-price">{{ product.sale_price | money }}</h4>
+        <span class="regular-price line-through">{{
+          product.regular_price | money
+        }}</span>
+        {% else %}
+        <h4>{{ product.price | money }}</h4>
+        {% endif %}
+        <salla-add-product-button
+          product-status="{{ product.status }}"
+          product-id="{{ product.id }}"
+          product-type="{{ product.type }}"
+          loader-position="center"
+          fill="outline"
+          class="btn--add-to-cart"
+        ></salla-add-product-button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </section>
- 
