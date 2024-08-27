@@ -8,16 +8,36 @@
 #}
 
 <section id="best-offers-{{ position }}-slider" class="s-block s-block--best-offers container overflow-hidden">
-  {% if products|length %}
-    <salla-products-slider
-            source="selected"
-            limit="{{ limit }}"
-            autoplay
-            source-value="[{{ products|map((product) => product.id)|join(',') }}]"
-            display-all-url="{{display_all_url}}"
-            block-title="{{ title }}"
-            block-subTitle="{{ sub_title|raw }}"
-            slider-id="slider-with-bg-{{ position }}"
-    ></salla-products-slider>
-  {% endif %}
+
+ 
+    <div>
+        {% if display_all_url %}
+            <a href="{{ display_all_url }}">{{ trans('blocks.home.display_all') }}</a>
+        {% endif %}
+        <div>
+            <button aria-label="Previous Slide"></button>
+            <button aria-label="Next Slide"></button>
+        </div>
+    </div>
+    <div data-id="{{ type }}-slider">
+        {% for product in products %}
+            <a href="{{ product.url }}">
+                <img src="{{ product.image.url }}" alt="{{ product.image.alt }}"/>
+                {% if product.promotion_title %} {{ product.promotion_title }} {% endif %}
+            </a>
+            <h3>
+                <a href="{{ product.url }}">{{ product.name }}</a>
+            </h3>
+            {% if product.on_sale %}
+                <div>
+                    <h4>{{ product.sale_price|money }}</h4>
+                    {{ product.regular_price|money }}
+                </div>
+            {% else %}
+                <h4>{{ product.price|money }}</h4>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
 </section>
+ 

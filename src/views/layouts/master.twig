@@ -141,6 +141,8 @@
     {% hook 'head:end' %}
 </head>
 <body id="app" class="overflow-x-hidden {% hook 'body:classes' %}
+  bg-gradient-to-r from-[#2F3C44]  via-dark to-[#2F5351] 
+
   {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
   {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
@@ -156,8 +158,7 @@
     {% component 'header.header' %}
     {% block content %}{% endblock %}
     {% component 'footer.footer' %}
-   
-</div>
+ </div>
 {% hook 'body:end' %}
 <script defer src="{{ 'app.js' | asset }}"></script>
 

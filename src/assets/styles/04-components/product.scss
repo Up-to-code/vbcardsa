@@ -1,8 +1,8 @@
   
 // Wishlist Product entry
 .product-entry {
-  @apply h-full transition-shadow duration-300 bg-white hover:shadow-default rounded-lg justify-between flex relative;
-
+  @apply h-full transition-shadow duration-300   hover:shadow-default rounded-lg justify-between flex relative;
+    background: transparent !important;
   &--wishlist {
     @apply justify-between p-4 flex-col sm:flex-row;
 
@@ -50,7 +50,7 @@
 // Digital Rating(SVG)---------------------------
 .s-product-card-content-pie-svg-base{ 
   transition: stroke-dashoffset 1s linear;
-  stroke: #E8EDF2;
+
   stroke-width: 2px;
   stroke-linecap: round;
   fill: none;

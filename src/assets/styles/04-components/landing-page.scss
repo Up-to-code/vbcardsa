@@ -57,7 +57,7 @@
     }
     .swiper-wrapper,.s-products-list-wrapper {
         .s-product-card-entry {
-            @apply border border-[#eee];
+            @apply mb-5;
         }
     }
     &--quick-buy {
