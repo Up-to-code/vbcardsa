@@ -1,14 +1,14 @@
-
 <div>
-   {% for item in questions %}
-       <div class="question">
-           <div class="question-title">
-               {{ item.questions.title }}
-           </div>
-           <div class="question-text">
-               {{ item.title }}
-           </div>
-       </div>
-   {% endfor %}
-   aaaaaaa
+  <h2>
+    {{ component.title }}
+  </h2>
+  {% for item in component.questions %}
+  <div class="question">
+    <div class="question-title">{{ item.title }}</div>
+    <div class="question-text">{{ item.body }}</div>
+  </div>
+  {% endfor %}
 </div>
+{% block scripts %}
+    <script defer src="{{ 'custom.js' | asset }}"></script>
+{% endblock %}
