@@ -71,31 +71,31 @@
                                             {% if loop.first %}
 												<img src="{{ item.product_image }}"
 													alt="{{ item.product_name }}"
-													class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+													class="flex-none w-24 h-20 border border-color bg-gray-100 rounded-md object-center object-cover">
 											{% else %}
 												<img src="{{ 'images/s-empty.png' | cdn }}"
 													data-src="{{ item.product_image }}"
 													alt="{{ item.product_name }}"
-													class="lazy flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+													class="lazy flex-none w-24 h-20 border border-color bg-gray-100 rounded-md object-center object-cover">
 											{% endif %}
                                         </a>
                                         <div class="space-y-1">
-                                            <h1 class="text-gray-900 leading-6 text-lg">
+                                            <h1 class="text-color leading-6 text-lg">
                                                 <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
                                             </h1>
-                                            <span class="text-sm text-gray-500 line-through item-regular-price {{ item.offer?'':'hidden' }}">{{ item.product_price|money }}</span>
-                                            <span class="item-price {{ item.offer?'text-red-800':'text-sm text-gray-500' }}">{{ item.price|money }}</span>
+                                            <span class="text-sm text-gray-100 line-through item-regular-price {{ item.offer?'':'hidden' }}">{{ item.product_price|money }}</span>
+                                            <span class="item-price {{ item.offer?'text-red-500':'text-sm text-gray-100' }}">{{ item.price|money }}</span>
                                             {% if item.weight_label %}
-                                            <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
+                                            <p class="text-sm text-gray-100 "> {{ trans('pages.products.weight') }}
                                              <span>{{ item.weight_label }}</span>
                                             </p>
                                             {% endif %}
-                                            <i class="sicon-discount-calculator text-gray-500 offer-icon {{ item.offer?'':'hidden' }}"></i>
+                                            <i class="sicon-discount-calculator text-gray-200 offer-icon {{ item.offer?'':'hidden' }}"></i>
                                             <span class="text-sm text-gray-500 offer-name {{ item.offer?'':'hidden' }}">{{ item.offer.names }}</span>
                                         </div>
                                     </div>
 
-                                    <div class="flex-1 border-t border-b border-gray-200 py-3 md:p-0 md:border-none mt-5 md:mt-0 flex justify-between items-center md:items-start">
+                                    <div class="flex-1  py-3 md:p-0 md:border-none mt-5 md:mt-0 flex justify-between items-center md:items-start">
                                         {% if item.type == 'donating' %}
                                             <span></span>
                                         {% elseif item.is_hidden_quantity %}
@@ -194,13 +194,13 @@
                         <h2 class="font-bold text-sm mb-5">{{ trans('pages.cart.summary') }}</h2>
 
                         <div class="flex justify-between text-sm mb-5">
-                            <span class="text-gray-500">{{ trans("pages.cart.items_total") }}</span>
+                            <span class="text-color">{{ trans("pages.cart.items_total") }}</span>
                             <b id="sub-total">{{ cart.sub_total|money }}</b>
                         </div>
 
                         {% if cart.options|length %}
                           <div class="flex justify-between text-sm mb-5">
-                            <span class="text-gray-500">{{ trans('pages.cart.order_options_total') }}</span>
+                            <span class="text-color">{{ trans('pages.cart.order_options_total') }}</span>
                             <b id="cart-options-total">{{ cart.options_total|money }}</b>
                           </div>
                         {% endif %}
@@ -208,7 +208,7 @@
 
                         <div id="shipping-cost"
                              class="flex justify-between text-sm mb-5 {{ cart.has_shipping?'':'hidden' }}">
-                            <span class="text-gray-500">{{ trans('pages.cart.shipping_cost') }}</span>
+                            <span class="text-color">{{ trans('pages.cart.shipping_cost') }}</span>
                             <b>{{ cart.real_shipping_cost|money }}</b>
                         </div>
 
@@ -243,7 +243,7 @@
                         </div>
 
                         <div class="flex justify-between text-lg mb-5">
-                            <span class="text-gray-500">{{ trans('pages.cart.final_total') }}</span>
+                            <span class="text-color">{{ trans('pages.cart.final_total') }}</span>
                             <b data-cart-total>{{ cart.total|money }}</b>
                         </div>
 

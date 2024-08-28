@@ -57,7 +57,7 @@
     }
     .swiper-wrapper,.s-products-list-wrapper {
         .s-product-card-entry {
-            @apply mb-5;
+            @apply bg-[#1D2028] mb-5;
         }
     }
     &--quick-buy {
@@ -106,4 +106,11 @@
     .s-product-card-wishlist-btn{
         display: hidden;
     }
+}
+.s-product-card-entry{
+    @apply bg-[#1D2028] text-white mb-5 max-h-[300px];
+    .s-product-card-content-title a{
+        @apply text-white;
+    }
+ 
 }

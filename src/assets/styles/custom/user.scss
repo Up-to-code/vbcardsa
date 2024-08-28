@@ -1,0 +1,26 @@
+.s-user-menu-trigger{
+    background: transparent !important;
+}
+.s-user-menu-dropdown{
+    background-color: #1d2028;
+    color: white; 
+}
+.s-user-menu-toggler.opened::before {
+    backdrop-filter: blur(20px); /* Increase the blur value as needed */
+    background: rgba(
+      4,
+      34,
+      79,
+      0.5
+    ); /* Optional: Add a semi-transparent background */
+}
+
+.s-user-menu-dropdown-item > a {
+    color: white;
+}
+.s-user-menu-dropdown-header-content > p{
+    color: rgb(216, 216, 216);
+}
+.s-user-menu-dropdown-header-content > span{
+    color: rgb(192, 192, 192);
+}

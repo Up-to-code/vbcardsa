@@ -1,68 +1,55 @@
-{# | Variable | Type | Description |
-|-----------------|-----------|------------------------------------------------------------------|
-| products | Product[] | List of products | | title | string | Section title | |
-display_all_url | ?string | If it exists, it means you should show a "load more"
-link to this URL | | position | int | Sorting number starting from zero | #}
+{# {#
+| Variable          | Type    | Description                                                      |
+|-------------------|---------|------------------------------------------------------------------|
+| items             | array   | List of sliders                                                  |
+| items[].url       | string  |                                                                  |
+| items[].link_type | ?String | category,product,offers,page,external_link,brand                 |
+| items[].image.url | string  |                                                                  |
+| items[].image.alt | string  |                                                                  |
+| position          | Int     | Sorting number start from zero                                   |
 
-<section
-  id="best-offers-{{ position }}-slider"
-  class="s-block s-block--best-offers container overflow-hidden"
->
-  <div class="header flex justify-between items-center">
-    <h2>{{ title }}</h2>
-    {% if display_all_url %}
-    <a href="{{ display_all_url }}" class="text-primary">{{
-      trans("blocks.home.display_all")
-    }}</a>
-    {% endif %}
-  </div>
-
-  <div class="slider-controls flex justify-end space-x-2 mt-2">
-    <button
-      aria-label="Previous Slide"
-      class="btn-slider-control prev-slide"
-    ></button>
-    <button
-      aria-label="Next Slide"
-      class="btn-slider-control next-slide"
-    ></button>
-  </div>
-
-  <div class="products-slider" data-id="{{ type }}-slider">
-    {% for product in products %}
-    <div class="product-card">
-      <a href="{{ product.url }}" class="product-image">
-        <img
-          src="{{ product.image.url }}"
-          alt="{{ product.image.alt }}"
-          loading="lazy"
-        />
-        {% if product.promotion_title %}
-        <span class="product-promotion">{{ product.promotion_title }}</span>
-        {% endif %}
-      </a>
-      <h3 class="product-title">
-        <a href="{{ product.url }}">{{ product.name }}</a>
-      </h3>
-      <div class="product-price">
-        {% if product.on_sale %}
-        <h4 class="sale-price">{{ product.sale_price | money }}</h4>
-        <span class="regular-price line-through">{{
-          product.regular_price | money
-        }}</span>
-        {% else %}
-        <h4>{{ product.price | money }}</h4>
-        {% endif %}
-        <salla-add-product-button
-          product-status="{{ product.status }}"
-          product-id="{{ product.id }}"
-          product-type="{{ product.type }}"
-          loader-position="center"
-          fill="outline"
-          class="btn--add-to-cart"
-        ></salla-add-product-button>
-      </div>
+<section class="s-block s-block--photos-slider {{ is_repeated ? 'repeated-block' : '' }}">
+  fffffff
+  <salla-slider 
+    type="carousel" 
+    class="home-slider photos-slider"
+    centered 
+    auto-play 
+    pagination 
+    id="photos-{{ position }}-slider"> 
+    <div slot="items">
+      {% for item in products %}
+        <div class="swiper-slide">
+          <a href="{{item.url}}">
+            <img loading="eager" src="{{ item.image.url }}" class="w-full object-contain rounded-md"></img>
+          </a>
+        </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
+  </salla-slider>
+</section>  #}
+
+ {#
+| Variable        | Type      | Description                                                      |
+|-----------------|-----------|------------------------------------------------------------------|
+| products        | Product[] | List of products                                                 |
+| title           | string    | Section title                                                    |
+| display_all_url | ?string   | If it's existed, mean should show load more link to this url     |
+| position        | Int       | Sorting number start from zero                                   |
+#}
+
+<section id="best-offers-{{ position }}-slider" class="s-block s-block--best-offers container overflow-hidden">
+  {% if products|length %}
+    <salla-products-slider
+            source="selected"
+            limit="{{ limit }}"
+            autoplay
+             source-value="[{{ products|map((product) => product.id)|join(',') }}]"
+            display-all-url="{{display_all_url}}"
+            block-title="{{ title }}"
+            block-subTitle="{{ sub_title|raw }}"
+            slider-id="slider-with-bg-{{ position }}"
+    >
+  </salla-products-slider>
+  {% endif %}
 </section>

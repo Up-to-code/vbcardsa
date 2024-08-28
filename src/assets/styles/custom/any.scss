@@ -1,0 +1,182 @@
+.copyright-text p{
+    color: white;
+}
+////////////////
+.bg-white{
+    background-color: #1d2028;
+}
+.form-label{
+    color: rgb(210, 210, 210);
+}
+.s-button-light-outline {
+    position: relative;
+    color: white;
+    border: 2px solid rgba(229, 231, 235, var(--tw-border-opacity));
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: transparent;
+    transition: all 0.4s ease; /* Smooth transition */
+    overflow: hidden; /* Ensures any pseudo-element stays within the button */
+    z-index: 1; /* Ensures the button content is above the pseudo-elements */
+}
+
+.s-button-light-outline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, #25ba83, #28cf92, #007bff);
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: -1; /* Places the effect behind the button content */
+    border-radius: 50%;
+    animation: gradientSweep 4s ease infinite; /* Dynamic gradient animation */
+}
+
+.s-button-light-outline:hover::before {
+    transform: translate(-50%, -50%) scale(1); /* Expands the gradient circle */
+    box-shadow: 0 0 20px rgba(40, 207, 146, 0.7); /* Glowing effect */
+}
+
+.s-button-light-outline:hover {
+    color: black; /* Change text color on hover */
+    border-color: transparent; /* Hide the border as the gradient takes over */
+    transform: scale(1.05); /* Slightly scale up the button on hover */
+}
+
+@keyframes gradientSweep {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+//////////////////
+/// product card
+.s-product-card-vertical .s-product-card-wishlist-btn button {
+    background: linear-gradient(135deg, #ff8a65, #ff5252); /* Gradient background */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 50%; /* Circular button */
+    padding: 0px !important;
+    padding-left: 4px !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition */
+    position: relative;
+    font-size: 18px; /* Base text size */
+    text-transform: uppercase; /* Uppercase text for a bold look */
+    font-weight: bold; /* Bold text */
+}
+
+.s-product-card-vertical .s-product-card-wishlist-btn button:hover {
+    background: linear-gradient(135deg, #25ba83 , #28cf92 ); /* Change gradient on hover */
+    transform: scale(1.1); /* Slightly increase size on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Deepen shadow on hover */
+}
+
+.s-product-card-vertical .s-product-card-wishlist-btn button i {
+    transition: transform 0.3s ease; /* Smooth transition for icon scaling */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.s-product-card-vertical .s-product-card-wishlist-btn button:hover i {
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
+    @apply text-white;
+}
+
+ 
+ 
+/////////////////
+/// 
+///  comments
+
+.s-comments-product{
+    background-color: #1d2028;
+    color: white;
+    border: #424758;
+}
+.s-comment-form-input,
+.s-form-control,
+.s-quantity-input-input
+{
+    background-color: #474f65;
+    color: white;
+    border: #424758;
+}
+.s-quantity-input-container{
+    border: #424758 solid 1px;
+}
+.s-comment-form-input::placeholder,
+.s-comments-item-content,
+.s-comments-item-timestamp,
+.s-comments-count-label{
+    color: rgb(201, 201, 201);
+}
+.text-color {
+    color: var(--color-primary);
+}
+.border-color {
+    border-color: #424758;
+}
+ 
+.s-button-primary {
+    position: relative; /* Needed to position the pseudo-elements */
+     color: white; /* Text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    overflow: hidden; /* Ensures the light effect doesn't overflow the button */
+}
+
+.s-button-primary::before, .s-button-primary::after {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 200%; /* Large width for the sweeping effect */
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Light effect color */
+    transform: skewX(-45deg); /* Skew for the diagonal effect */
+    transition: transform 0.3s ease;
+}
+
+.s-button-primary::before {
+    top: 0;
+    animation: lightSweep 2s infinite linear; /* Infinite looping animation */
+}
+
+.s-button-primary::after {
+    bottom: 0;
+    animation: lightSweep 3s infinite linear 2s; /* Delay for the after element */
+}
+
+.s-button-primary:hover {
+    transform: scale(1.05); /* Slight scaling to make the button appear to pop out */
+    box-shadow: 0 8px 15px var(--color-primary); /* Soft shadow for depth */
+}
+
+@keyframes lightSweep {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+ //////////////
+ /// 
+ /// 
+ 
