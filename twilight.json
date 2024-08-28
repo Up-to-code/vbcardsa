@@ -827,7 +827,62 @@
             "title": "أسئلة شائعة",
             "icon": "sicon-ul",
             "path": "home.questions",
-            "fields": []
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": null,
+                    "variant": "h2",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "questions",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "questions",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "questions.title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "title",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "questions.body",
+                            "type": "string",
+                            "format": "richtext",
+                            "label": "body",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Your text here ..",
+                            "icon": "sicon-touch-type",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "15",
+                            "maxLength": 1000
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": 5
+                }
+            ]
         }
     ],
     "support_url": "https://example.com",
