@@ -821,6 +821,13 @@
                     ]
                 }
             ]
+        },
+        {
+            "key": "4b168356-a3cd-4f0f-8d8b-bd9c2cfc7820",
+            "title": "أسئلة شائعة",
+            "icon": "sicon-ul",
+            "path": "home.questions",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
