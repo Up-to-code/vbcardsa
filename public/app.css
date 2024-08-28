@@ -498,6 +498,15 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .top-24{top:6rem}
 .top-4{top:1rem}
 .top-full{top:100%}
+.bottom-5{bottom:1.25rem}
+.right-5{right:1.25rem}
+.bottom-10{bottom:2.5rem}
+.bottom-12{bottom:3rem}
+.bottom-14{bottom:3.5rem}
+.bottom-\[\]{bottom:}
+.bottom-\[70px\]{bottom:70px}
+.right-1{right:0.25rem}
+.right-8{right:2rem}
 .-z-1{z-index:-1}
 .z-10{z-index:10}
 .z-20{z-index:20}
@@ -705,6 +714,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .bg-transparent{background-color:transparent}
 .bg-white{--tw-bg-opacity:1;background-color:rgba(255, 255, 255, 1);background-color:rgba(255, 255, 255, var(--tw-bg-opacity))}
 .bg-zinc-950{--tw-bg-opacity:1;background-color:rgba(9, 9, 11, 1);background-color:rgba(9, 9, 11, var(--tw-bg-opacity))}
+.bg-zinc-800{--tw-bg-opacity:1;background-color:rgba(39, 39, 42, 1);background-color:rgba(39, 39, 42, var(--tw-bg-opacity))}
 .bg-cover{background-size:cover}
 .bg-center{background-position:center}
 .bg-no-repeat{background-repeat:no-repeat}

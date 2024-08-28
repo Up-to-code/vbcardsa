@@ -166,8 +166,22 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
     </noscript>
     <div class="app-inner flex flex-col min-h-full">
       {% hook 'body:start' %} {% component 'header.header' %} {% block content
-      %}{% endblock %} {% component 'footer.footer' %}
+      %} {% endblock %} {% component 'footer.footer' %}
+    {# whatsapp #}
+      <div>
+        {% if theme.settings.get('whatsapp') %}
+        <a
+          href=" {{ theme.settings.get('whatsapp') }}"
+          target="_blank"
+          class="fixed bottom-[70px] right-8 z-50 bg-primary px-3 py-2 pt-3 rounded-full text-white"
+        >
+          <i class="sicon-whatsapp text-2xl"></i>
+        </a>
+        {% endif %}
+      </div>
+      
     </div>
+
     {% hook 'body:end' %}
     <script defer src="{{ 'app.js' | asset }}"></script>
 
