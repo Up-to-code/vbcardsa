@@ -1,11 +1,12 @@
-<div class="faq-container">
-    <h2 class="faq-title w-[90%] m-auto">{{ component.title }}</h2>
+<div class="w-full max-w-[600px] mx-auto font-sans">
+    <h2 class="w-[90%] mx-auto">{{ component.title }}</h2>
     {% for item in component.questions %}
-    <div class="question">
-      <div class="question-title">
-        <span class="arrow"></span> {{ item.title }}
+    <div class="bg-[#1c1c1f] rounded-lg my-2.5 overflow-hidden transition-colors duration-300 ease-in-out w-[90%] mx-auto">
+      <div class="cursor-pointer text-lg text-white py-3.5 px-5 flex justify-between items-center transition-all duration-300 ease-in-out hover:bg-[#2c2c31] hover:px-6 question-title">
+        <span class="border-solid border-white border-r-[3px] border-b-[3px] inline-block p-[5px] rotate-45 transition-transform duration-300 ease-in-out arrow"></span>
+        {{ item.title }}
       </div>
-      <div class="question-text">
+      <div class="py-2 px-5 bg-[#2c2c31] rounded-lg text-white hidden text-base leading-6 question-text">
         {{ item.body }}
       </div>
     </div>
@@ -14,60 +15,8 @@
   
   {% block styles %}
   <style>
-    .faq-container {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      font-family: Arial, sans-serif;
-    }
-  
-    .question {
-      background-color: #1c1c1f;
-      border-radius: 10px;
-      margin: 10px 0;
-      overflow: hidden;
-      transition: background-color 0.3s ease;
-      width: 90%;
-      margin: 10px auto;
-    }
-  
-    .question-title {
-      cursor: pointer;
-      font-size: 18px;
-      color: #fff;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color 0.3s ease, padding 0.3s ease;
-    }
-  
-    .question-title:hover {
-      background-color: #2c2c31;
-      padding: 15px 25px;
-    }
-  
-    .arrow {
-      border: solid #fff;
-      border-width: 0 3px 3px 0;
-      display: inline-block;
-      padding: 5px;
-      transform: rotate(45deg);
-      transition: transform 0.3s ease;
-    }
-  
     .question-title.active .arrow {
       transform: rotate(-135deg);
-    }
-  
-    .question-text {
-      padding: 0 20px 20px 20px;
-      background-color: #2c2c31;
-      border-radius: 10px;
-      color: #fff;
-      display: none;
-      font-size: 16px;
-      line-height: 1.5;
     }
   
     .question-text.show {
@@ -88,26 +37,24 @@
   
   {% block scripts %}
   <script>
-  onload = async function () {
+  document.addEventListener('DOMContentLoaded', () => {
       const questionTitles = document.querySelectorAll('.question-title');
   
       questionTitles.forEach(title => {
-          title.addEventListener('click', function () {
-              const bodyText = this.nextElementSibling;
+          title.addEventListener('click', () => {
+              const bodyText = title.nextElementSibling;
   
-              this.classList.toggle('active');
+              title.classList.toggle('active');
+              bodyText.classList.toggle('show');
   
-              if (bodyText.classList.contains('show')) {
-                  bodyText.classList.remove('show');
-              } else {
-                  document.querySelectorAll('.question-text').forEach(text => {
-                      text.classList.remove('show');
-                  });
-                  bodyText.classList.add('show');
-              }
+              questionTitles.forEach(otherTitle => {
+                  if (otherTitle !== title) {
+                      otherTitle.classList.remove('active');
+                      otherTitle.nextElementSibling.classList.remove('show');
+                  }
+              });
           });
       });
-  };
+  });
   </script>
   {% endblock %}
-  
