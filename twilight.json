@@ -889,6 +889,13 @@
                     "maxLength": 5
                 }
             ]
+        },
+        {
+            "key": "ccad7951-3848-43ea-ab24-b744609ed8f6",
+            "title": "مزايا",
+            "icon": "sicon-delete_row",
+            "path": "home.mazayh",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
