@@ -115,7 +115,7 @@
 
                     {# Calories Badge #}
                     {% if product.calories %}
-                        <div class="absolute z-[2] top-4 rtl:left-4 ltr:right-4 bg-white shadow-sm flex flex-col justify-center items-center rounded-full w-20 h-20 md:w-24 md:h-24">
+                    <div class="absolute z-[2] top-4 rtl:left-4 ltr:right-4 bg-white shadow-sm flex flex-col justify-center items-center rounded-full w-20 h-20 md:w-24 md:h-24">
                             <span class="text-red-500 text-xl leading-none font-bold">{{ product.calories }}</span>
                             <span class="text-xs text-gray-500">{{ trans('pages.products.calories') }}</span>
                         </div>
@@ -144,11 +144,11 @@
                                     {% if loop.first %}
                                         <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}"
                                              alt="{{ image.alt }}"
-                                             class="h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                             class="h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }} border-none">
                                     {% else %}
                                         <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}"
                                              alt="{{ image.alt }}"
-                                             class="lazy h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                             class="lazy h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }} border-none">
                                     {% endif %}
                                 </a>
                             {% endif %}
@@ -162,12 +162,12 @@
                                     {% if loop.index < 5 %}
                                         <img src="{{ image.url }}"
                                              loading="eager"
-                                             class="object-cover w-full h-full bg-gray-100 rounded-md overflow-hidden"
+                                             class="object-cover w-full h-full   rounded-md overflow-hidden border-none"
                                              title="{{ image.alt }}"
                                              alt="{{ image.alt }}"/>
                                     {% else %}
                                         <img data-src="{{ image.url }}" src="{{ 'images/s-empty.png' | cdn }}"
-                                             class="object-cover w-full h-full lazy bg-gray-100 rounded-md overflow-hidden"
+                                             class="object-cover w-full h-full lazy   rounded-md overflow-hidden border-none"
                                              title="{{ image.alt }}"
                                              alt="{{ image.alt }}"/>
                                     {% endif %}

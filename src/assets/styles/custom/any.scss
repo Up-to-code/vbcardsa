@@ -191,3 +191,54 @@
 //////////////
 ///
 ///
+
+///////remove shadow from slider
+.swiper.s-slider-container.swiper-initialized.swiper-horizontal.swiper-pointer-events.swiper-autoheight.swiper-rtl.swiper-backface-hidden {
+  border: none !important;
+}
+salla-slider.details-slider .swiper-slide,
+.s-orders-table-tbody-tr {
+  position: static;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  --tw-ring-offset-shadow: none;
+  --tw-ring-shadow: none;
+  --tw-ring-inset: unset;
+  --tw-ring-opacity: 0;
+  --tw-ring-color: transparent;
+}
+.bg-gray-100 {
+  background-color: transparent;
+}
+.s-orders-table-tbody-tr {
+  position: initial;
+  border-radius: initial;
+  background-color: initial;
+  box-shadow: initial;
+  --tw-ring-offset-shadow: initial;
+  --tw-ring-shadow: initial;
+  --tw-ring-inset: initial;
+  --tw-ring-opacity: initial;
+  --tw-ring-color: initial;
+  border: initial;
+}
+.s-button-dark-link {
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+.s-notifications-item:hover {
+  color: var(--color-primary);
+}
+.s-user-profile-field-label {
+  color: rgb(201, 201, 201) !important;
+}
+.form-input, .form-textarea, .form-select, .form-multiselect{
+   background: #1d2028;
+   border: #1d2028;
+}
+svg {
+  color: white;
+  fill: white;
+}
