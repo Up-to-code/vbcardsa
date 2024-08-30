@@ -59,7 +59,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new CopyPlugin({patterns: [{from: asset('fonts'), to: public('fonts')}]})
+        new CopyPlugin({patterns: [{from: asset('fonts'), to: public('fonts')}]}),
         new ThemeWatcher(),
         new MiniCssExtractPlugin(),
         new CopyPlugin({patterns: [{from: asset('images'), to: public('images')}]}),
