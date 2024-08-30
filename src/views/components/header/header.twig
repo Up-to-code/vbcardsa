@@ -56,8 +56,16 @@
             >
               <i class="sicon-menu text-primary text-2xl"></i>
             </a>
-
-            <salla-menu source="header" topnav use-react-link></salla-menu>
+            <div class="hidden lg:block">
+              <salla-user-menu avatar-only  show-header></salla-user-menu>
+            </div>
+            <salla-menu
+              source="header"
+              topnav="true"
+              use-react-link="true"
+             
+            > </salla-menu>
+     
           </div>
 
           <a class="navbar-brand" href="{{ store.url }}">
@@ -86,7 +94,6 @@
       </div>
     </div>
   </div>
-
 </header>
 
 {% if store.scope %}
@@ -96,14 +103,24 @@
 {% endif %}
 <div
   class="fixed bottom-0 right-0 w-full h-[60px] bg-[#1C2029] text-white z-50 flex items-center justify-around"
-> <div>
-     <a href="{{ store.url }}">
+>
+  <div>
+    <a href="{{ store.url }}">
+      <img src="{{ 'images/home.png' | asset }}" alt="" class="w-8 tint" />
+    </a>
+  </div>
+  <div>
+    <button
+      class="header-btn"
+      aria-label="search-icon"
+      onclick="salla.event.dispatch('search::open')"
+    >
       <img
-        src="{{ 'images/home.png' | asset }}"
-        alt=""
-        class="w-8 tint  "
+        src="{{ 'images/search.png' | asset }}"
+        alt="Search"
+        class="w-6 tint"
       />
-     </a>
+    </button>
   </div>
   <div>
     <div class="flex items-center justify-end">
@@ -115,7 +132,9 @@
   </div>
   <div>
     {# User Menu (if applicable) #} {% if user.type == 'user' %}
+
     <salla-user-menu avatar-only show-header></salla-user-menu>
+
     {% else %}
     <button
       class="header-btn"
@@ -130,5 +149,4 @@
     </button>
     {% endif %}
   </div>
- 
 </div>

@@ -4,3 +4,12 @@
 .r-180{
     transform: rotate(180deg);
 }
+@media (max-width: 640px) {
+    .is-sticky-product-bar .sticky-product-bar {
+        bottom: 60px;
+        z-index: 100;
+    }
+}
+.s-user-menu-toggler.opened .s-user-menu-dropdown{
+    right: 0;
+}
