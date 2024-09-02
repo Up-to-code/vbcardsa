@@ -48,7 +48,7 @@
     <div class="inner py-2">
       <div class="container bg-[#1C2029] mx-auto w-[90%] rounded-md">
         <div class="flex items-center justify-between relative">
-          <div class="flex items-center w-full lg:flex-1">
+          <div class="flex items-center  lg:flex-1">
             <a
               class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4"
               href="#mobile-menu"
@@ -65,7 +65,7 @@
             </div>
           </div>
 
-          <div class="flex-shrink-0 lg:flex lg:items-center lg:justify-center lg:w-auto">
+          <div class="flex-1 flex items-center justify-center  ">
             <a href="{{ store.url }}" class="mx-auto">
               <img
                 fetchpriority="high"
@@ -74,7 +74,7 @@
                 loading="eager"
                 src="{{ store.logo }}"
                 alt="{{ store.name }} logo"
-                class="mx-auto md:mx-auto lg:mx-0 h-16"
+                class="mx-auto h-16"
               />
               {% if is_page('index') %}
               <h1 class="sr-only">{{ store.name }}</h1>
