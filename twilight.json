@@ -954,6 +954,13 @@
                     "maxLength": 5
                 }
             ]
+        },
+        {
+            "key": "f8ac5a44-749c-41a8-9df7-91e9e157c543",
+            "title": "مزايا",
+            "icon": "sicon-add_col_after",
+            "path": "home.futioers",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
