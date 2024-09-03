@@ -87,7 +87,7 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
         content: "";
         width: 36px;
         height: 36px;
-        border: 3px solid #eee;
+        border: 3px solid #0c0c0c;
         border-top-color: #5bd5c4;
         border-radius: 50%;
         animation: loading 0.75s ease infinite;
@@ -145,15 +145,15 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
 
     <style>
       @font-face {
-        font-family: "SomarSans";
-        src: url({{"fonts/SomarSans-Bold.otf"|asset}}) format("opentype");
+        font-family: "Somar";
+        src: url({{"fonts/SomarSans-Bold.otf" |asset}}) format("opentype");
         font-weight: 700; /* bold */
         font-style: normal;
       }
 
       @font-face {
         font-family: "SomarSans";
-        src: url({{"fonts/SomarSans-Medium.otf"|asset}}) format("opentype");
+        src: url({{ "fonts/SomarSans-Medium.otf"| asset} }) format("opentype");
         font-weight: 500; /* medium */
         font-style: normal;
       }

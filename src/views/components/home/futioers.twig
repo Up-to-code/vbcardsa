@@ -1,0 +1,45 @@
+<div class="container mx-auto px-4 py-8">
+    <div class="flex items-center justify-center mb-8">
+        <div class="w-20 h-0.5 bg-primary"></div>
+        <h2 class="text-2xl font-bold mx-4 text-center">{{ component.title }}</h2>
+        <div class="w-20 h-0.5 bg-primary"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {% for item in component.futioers %}
+        <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-gray-200 rounded-full flex items-center justify-center">
+                <img src="{{ item.image }}" alt="{{ item.title }}" class="w-8 h-8 object-contain">
+            </div>
+         
+            <div class="text-3xl font-bold  ">
+                <span class="number" data-target="{{ item.number }}">0</span>
+            </div>
+            <p class=" text-zinc-400  my-0">{{ item.title }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const numbers = document.querySelectorAll('.number');
+    
+    numbers.forEach(number => {
+        const target = parseInt(number.getAttribute('data-target'));
+        const increment = target / 100; // To complete in roughly 1 second at 60fps
+        let current = 0;
+
+        const updateNumber = () => {
+            if (current < target) {
+                current += increment;
+                number.textContent = Math.round(current);
+                requestAnimationFrame(updateNumber);
+            } else {
+                number.textContent = target;
+            }
+        };
+
+        updateNumber();
+    });
+});
+</script>
