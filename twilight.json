@@ -960,7 +960,81 @@
             "title": "مزايا",
             "icon": "sicon-add_col_after",
             "path": "home.futioers",
-            "fields": []
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "title",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": true,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "futioers",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "futioers",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "futioers.number",
+                            "type": "number",
+                            "format": "float",
+                            "inputType": "number",
+                            "label": "Number",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Input a number between -10.10 and 100.",
+                            "icon": "sicon-hashtag",
+                            "value": null,
+                            "required": true,
+                            "step": 0.1,
+                            "minimum": -10.1,
+                            "maximum": "10000000000"
+                        },
+                        {
+                            "id": "futioers.image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "Image",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
+                        },
+                        {
+                            "id": "futioers.title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "title",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": true,
+                            "minLength": 6,
+                            "maxLength": 30
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": 5
+                }
+            ]
         }
     ],
     "support_url": "https://example.com",
