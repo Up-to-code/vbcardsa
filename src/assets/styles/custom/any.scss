@@ -242,3 +242,18 @@ svg {
   color: white;
   fill: white;
 }
+
+.s-cart-summary{
+  &-wrapper{
+ 
+  }
+  &-icon{
+   display: none;
+  }
+  &-count{
+   display: none;
+  }
+  &-total{
+    
+  }
+}

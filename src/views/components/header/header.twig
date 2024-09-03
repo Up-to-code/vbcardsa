@@ -1,80 +1,41 @@
-{# | Variable | Type | Description |
-|------------------|---------|---------------------------------| | cart | object
-| | | cart.items_count | int | | | cart.total | string | Formatted total ex:
-"١٠٠ ر.س" | #} {# Top Nav #} {#
-<div class="top-navbar">
-  <div class="container flex justify-between">
-    <div class="flex-1 flex items-center gap-2">
-      { Footer Menu } {% if important_links %}
-      <salla-menu source="footer" topnav></salla-menu>
-      {% endif %} { Language & Currency Component }
-      <div class="header-buttons">
-        {% if store.settings.is_multilingual or
-        store.settings.currencies_enabled %}
-        <button
-          type="button"
-          onclick="salla.event.dispatch('localization::open')"
-          class="btn--rounded-gray basis-0"
-        >
-          <span
-            class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"
-          ></span>
-          <span class="mx-1.5">|</span> <span>{{ currency.symbol }}</span>
-        </button>
-        <salla-localization-modal></salla-localization-modal>
-        {% endif %}
-      </div>
-
-      { Scopes | Branches } {% if store.scope %}
-      <button
-        class="btn--rounded-gray"
-        onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})"
-      >
-        <i class="sicon-location rtl:ml-1 ltr:mr-1"></i> {{ store.scope.name }}
-      </button>
-      {% endif %} { Search bar }
-      <div class="header-search flex-1">
-        <salla-search inline oval height="36"></salla-search>
-      </div>
-    </div>
-
-    <salla-contacts is-header></salla-contacts>
-  </div>
-</div>
-#} {% set important_links = theme.settings.get('important_links') %}
+{# Header component for responsive design #} {% set important_links =
+theme.settings.get('important_links') %}
 <header class="store-header">
   {# Main Nav #}
   <div id="mainnav" class="main-nav-container bg-[#1C2029] rounded-b-xl">
-    <div class="inner py-2">
-      <div class="container bg-[#1C2029] mx-auto w-[90%] rounded-md">
+    <div class="inner py-2 bg-[#1C2029] rounded-b-2xl">
+      <div class="container bg-[#1C2029] mx-auto rounded-b-xl">
         <div class="flex items-center justify-between relative">
-          <div class="flex items-center  lg:flex-1">
-            <a
+          {# Mobile menu button #}
+          <div class="flex items-center lg:flex-1">
+            <button
               class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4"
-              href="#mobile-menu"
-              aria-label="Open-menu"
+              aria-label="Toggle menu"
+              onclick="toggleMobileMenu()"
             >
-              <i class="sicon-menu text-primary text-2xl"></i>
-            </a>
-            <div class="hidden lg:block lg:ml-4">
+              <i class="sicon-menu text-white text-2xl"></i>
+            </button>
+            {# Desktop menu #}
+            <nav class="hidden lg:block lg:ml-4">
               <salla-menu
                 source="header"
                 topnav="true"
                 use-react-link="true"
               ></salla-menu>
-            </div>
+            </nav>
           </div>
 
-          <div class="flex-1 flex items-center justify-center  ">
+          {# Logo #}
+          <div class="flex-1 flex items-center justify-center">
             <a href="{{ store.url }}" class="mx-auto">
               <img
                 fetchpriority="high"
-                width="100%"
-                height="100%"
+                width="100"
+                height="100"
                 loading="eager"
                 src="{{ store.logo }}"
                 alt="{{ store.name }} logo"
-                class="mx-auto h-16"
+                class="mx-auto h-16 w-auto"
               />
               {% if is_page('index') %}
               <h1 class="sr-only">{{ store.name }}</h1>
@@ -84,12 +45,26 @@
             </a>
           </div>
 
+          {# Cart and user menu #}
           <div class="flex items-center justify-end lg:flex-1 lg:ml-4">
-            {# Cart Summary #}
-            <salla-cart-summary class="header-cart no-summary hydrated">
-              <i slot="icon" class="header-btn__icon icon sicon-cart"></i>
-            </salla-cart-summary>
-            <div class="hidden lg:block lg:mr-4">
+            <div class="relative mr-4">
+              <salla-cart-summary class="header-cart no-summary hydrated">
+                <img
+                  slot="icon"
+                  src="{{ 'images/cart.png' | asset }}"
+                  alt="Cart"
+                  class="w-[30px] tint"
+                />
+                <span
+                  slot="badge"
+                  class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                >
+                  {{ cart.items_count }}
+                </span>
+              </salla-cart-summary>
+            </div>
+
+            <div class="hidden lg:block">
               <salla-user-menu avatar-only show-header></salla-user-menu>
             </div>
           </div>
@@ -99,71 +74,85 @@
   </div>
 </header>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+{# Mobile menu #}
+<div id="mobile-menu" class="fixed inset-0 bg-[#1C2029] z-50 hidden">
+  <div class="container mx-auto py-4">
+    <button
+      onclick="toggleMobileMenu()"
+      class="text-white text-2xl absolute top-4 right-4"
+    >
+      &times;
+    </button>
+    <nav class="mt-12">
+      <salla-menu source="header" use-react-link="true"></salla-menu>
+    </nav>
+  </div>
+</div>
 
 {% if store.scope %}
 <salla-scopes
   selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
 ></salla-scopes>
-{% endif %}
-<div
-  class="fixed bottom-0 right-0 w-full h-[60px] bg-[#1C2029] text-white z-50 flex items-center justify-around"
+{% endif %} {# Bottom navigation for mobile #}
+<nav
+  class="lg:hidden fixed bottom-0 left-0 right-0 bg-[#1C2029] text-white z-50 shadow-lg"
 >
-  <div>
-    <a href="{{ store.url }}">
-      <img src="{{ 'images/home.png' | asset }}" alt="" class="w-8 tint" />
+  <div class="flex items-center justify-around h-[60px]">
+    <a href="{{ store.url }}" class="flex flex-col items-center">
+      <img
+        src="{{ 'images/home.png' | asset }}"
+        alt="Home"
+        class="w-6 h-6 tint mb-1"
+      />
     </a>
-  </div>
-  <div>
     <button
-      class="header-btn"
-      aria-label="search-icon"
+      class="flex flex-col items-center"
+      aria-label="Search"
       onclick="salla.event.dispatch('search::open')"
     >
       <img
         src="{{ 'images/search.png' | asset }}"
         alt="Search"
-        class="w-6 tint"
+        class="w-6 h-6 tint mb-1"
       />
     </button>
-  </div>
-  <div>
-    <div class="flex items-center justify-end">
-      {# Cart Summary #}
+    <div class="relative mr-4">
       <salla-cart-summary class="header-cart no-summary hydrated">
-        <i slot="icon" class="header-btn__icon icon sicon-cart"></i>
+        <img
+          slot="icon"
+          src="{{ 'images/cart.png' | asset }}"
+          alt="Cart"
+          class="w-[30px] tint"
+        />
+        <span
+          slot="badge"
+          class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+        >
+          {{ cart.items_count }}
+        </span>
       </salla-cart-summary>
     </div>
-  </div>
-  <div>
-    {# User Menu (if applicable) #} {% if user.type == 'user' %}
-
-    <salla-user-menu avatar-only show-header></salla-user-menu>
-
+    {% if user.type == 'user' %}
+    <salla-user-menu avatar-only show-header> </salla-user-menu>
     {% else %}
     <button
-      class="header-btn"
-      aria-label="user-icon"
+      class="flex flex-col items-center"
+      aria-label="Login"
       onclick="salla.event.dispatch('login::open')"
     >
       <img
         src="{{ 'images/login.png' | asset }}"
-        alt=""
-        class="w-8 tint r-180"
+        alt="Login"
+        class="w-6 h-6 tint mb-1"
       />
     </button>
     {% endif %}
   </div>
-</div>
+</nav>
+
+<script>
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById("mobile-menu");
+    mobileMenu.classList.toggle("hidden");
+  }
+</script>
