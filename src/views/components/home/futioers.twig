@@ -1,4 +1,4 @@
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-4 py-8" id="futioers-section">
     <div class="flex items-center justify-center mb-8">
         <div class="w-20 h-0.5 bg-primary"></div>
         <h2 class="text-2xl font-bold mx-4 text-center">{{ component.title }}</h2>
@@ -11,10 +11,10 @@
                 <img src="{{ item.image }}" alt="{{ item.title }}" class="w-8 h-8 object-contain">
             </div>
          
-            <div class="text-3xl font-bold  ">
+            <div class="text-3xl font-bold">
                 <span class="number" data-target="{{ item.number }}">0</span>
             </div>
-            <p class=" text-zinc-400  my-0">{{ item.title }}</p>
+            <p class="text-zinc-400 my-0">{{ item.title }}</p>
         </div>
         {% endfor %}
     </div>
@@ -22,24 +22,42 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    const futioersSection = document.getElementById('futioers-section');
     const numbers = document.querySelectorAll('.number');
-    
-    numbers.forEach(number => {
-        const target = parseInt(number.getAttribute('data-target'));
-        const increment = target / 100; // To complete in roughly 1 second at 60fps
-        let current = 0;
+    let animationStarted = false;
 
-        const updateNumber = () => {
-            if (current < target) {
-                current += increment;
-                number.textContent = Math.round(current);
-                requestAnimationFrame(updateNumber);
-            } else {
-                number.textContent = target;
+    const startCountAnimation = () => {
+        if (animationStarted) return;
+        animationStarted = true;
+
+        numbers.forEach(number => {
+            const target = parseInt(number.getAttribute('data-target'));
+            const increment = target / 100; // To complete in roughly 1 second at 60fps
+            let current = 0;
+
+            const updateNumber = () => {
+                if (current < target) {
+                    current += increment;
+                    number.textContent = Math.round(current);
+                    requestAnimationFrame(updateNumber);
+                } else {
+                    number.textContent = target;
+                }
+            };
+
+            updateNumber();
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCountAnimation();
+                observer.unobserve(futioersSection);
             }
-        };
+        });
+    }, { threshold: 0.1 });
 
-        updateNumber();
-    });
+    observer.observe(futioersSection);
 });
 </script>

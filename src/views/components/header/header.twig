@@ -7,7 +7,16 @@ theme.settings.get('important_links') %}
       <div class="container bg-[#1C2029] mx-auto rounded-b-xl">
         <div class="flex items-center justify-between relative">
           {# Mobile menu button #}
-          <div class="flex items-center lg:flex-1">
+          {% if advertisement.icon %}
+          <span class="{{ advertisement.icon }}"></span>
+        {% endif %}
+        {% if advertisement.url %}
+          <a href="{{ advertisement.url }}" {% if advertisement.is_new_window %} target='_blank' {% endif %}>
+            {{ advertisement.description }}
+          </a>
+        {% else %}
+          {{ advertisement.description }}
+        {% endif %}     <div class="flex items-center lg:flex-1">
             <button
               class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4"
               aria-label="Toggle menu"
@@ -17,11 +26,7 @@ theme.settings.get('important_links') %}
             </button>
             {# Desktop menu #}
             <nav class="hidden lg:block lg:ml-4">
-              <salla-menu
-                source="header"
-                topnav="true"
-                use-react-link="true"
-              ></salla-menu>
+           <salla-
             </nav>
           </div>
 
