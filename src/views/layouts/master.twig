@@ -135,19 +135,12 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
 
     <style>
       :root {
-           
+
           --color-primary: {{ theme.color.primary }};
           --color-primary-dark: {{ theme.color.darker(0.15) }};
           --color-primary-light: {{ theme.color.lighter(0.15) }};
           --color-primary-reverse: {{ theme.color.reverse_text }};
       }
-    </style>
-
-    <style>
-      *{
-        font-family: 'Somar Sans', sans-serif;
-      }
-      @import url("https://fonts.cdnfonts.com/css/somar-sans");
     </style>
 
     {# tracking services, custom css feature. #} {% hook 'head:end' %}

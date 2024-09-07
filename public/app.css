@@ -1,6 +1,11 @@
 /*!*******************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
   \*******************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap);
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss (1) ***!
+  \***********************************************************************************************************************************************************************************************/
+
 /*
  * IMPORTANT NOTE: Theme based on Tailwindcss but for the purpose of simplifing the DOM we use
  * tailwind classes with @apply directive in the SCSS files
@@ -728,6 +733,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .bg-\[\#17171a\]{--tw-bg-opacity:1;background-color:rgba(23, 23, 26, 1);background-color:rgba(23, 23, 26, var(--tw-bg-opacity))}
 .bg-\[\#1C2029\]{--tw-bg-opacity:1;background-color:rgba(28, 32, 41, 1);background-color:rgba(28, 32, 41, var(--tw-bg-opacity))}
 .bg-\[\#1c1c1f\]{--tw-bg-opacity:1;background-color:rgba(28, 28, 31, 1);background-color:rgba(28, 28, 31, var(--tw-bg-opacity))}
+.bg-\[\#2a2a2d\]{--tw-bg-opacity:1;background-color:rgba(42, 42, 45, 1);background-color:rgba(42, 42, 45, var(--tw-bg-opacity))}
 .bg-black{--tw-bg-opacity:1;background-color:rgba(0, 0, 0, 1);background-color:rgba(0, 0, 0, var(--tw-bg-opacity))}
 .bg-blue-50{--tw-bg-opacity:1;background-color:rgba(239, 246, 255, 1);background-color:rgba(239, 246, 255, var(--tw-bg-opacity))}
 .bg-dark{--tw-bg-opacity:1;background-color:rgba(29, 31, 31, 1);background-color:rgba(29, 31, 31, var(--tw-bg-opacity))}
@@ -814,7 +820,6 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .font-medium{font-weight:500}
 .font-normal{font-weight:400}
 .font-semibold{font-weight:600}
-.font-extrabold{font-weight:800}
 .leading-10{line-height:2.5rem}
 .leading-12{line-height:3rem}
 .leading-5{line-height:1.25rem}
@@ -6857,6 +6862,12 @@ svg {
 .s-user-menu-dropdown-header-content > span {
   color: rgb(192, 192, 192);
 }
+body {
+  font-family: "Rubik", sans-serif;
+}
+* {
+  font-family: "Rubik", sans-serif !important;
+}
 .before\:text-orange-300::before{content:var(--tw-content);--tw-text-opacity:1;color:rgba(253, 186, 116, 1);color:rgba(253, 186, 116, var(--tw-text-opacity))}
 .first\:rounded-t-md:first-child{border-top-left-radius:0.375rem;border-top-right-radius:0.375rem}
 .first\:pt-16:first-child{padding-top:4rem}
@@ -6871,6 +6882,7 @@ svg {
 .target\:btn:target{display:inline-flex;flex:1 1 0%;align-items:center;justify-content:center;white-space:nowrap;border-radius:0.375rem;padding-left:1.5rem;padding-right:1.5rem;padding-bottom:0.625rem;padding-top:0.5rem;font-size:0.875rem;line-height:1.25rem;font-weight:700;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:300ms}
 .target\:btn:target:hover{opacity:0.8}
 .hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(1.05) scaleY(1.05);transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
+.hover\:bg-\[\#2a2a2d\]:hover{--tw-bg-opacity:1;background-color:rgba(42, 42, 45, 1);background-color:rgba(42, 42, 45, var(--tw-bg-opacity))}
 .hover\:text-black:hover{--tw-text-opacity:1;color:rgba(0, 0, 0, 1);color:rgba(0, 0, 0, var(--tw-text-opacity))}
 .hover\:text-dark:hover{--tw-text-opacity:1;color:rgba(29, 31, 31, 1);color:rgba(29, 31, 31, var(--tw-text-opacity))}
 .hover\:text-primary:hover{color:#4a90e2;color:var(--color-primary)}
@@ -6932,6 +6944,7 @@ svg {
 .md\:w-7\/12{width:58.333333%}
 .md\:w-72{width:18rem}
 .md\:w-96{width:24rem}
+.md\:w-\[90\%\]{width:90%}
 .md\:w-auto{width:auto}
 .md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}
 .md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}
@@ -7010,6 +7023,7 @@ svg {
 .ltr\:right-1:where([dir="ltr"], [dir="ltr"] *){right:0.25rem}
 .ltr\:right-1\.5:where([dir="ltr"], [dir="ltr"] *){right:0.375rem}
 .ltr\:right-4:where([dir="ltr"], [dir="ltr"] *){right:1rem}
+.ltr\:left-4:where([dir="ltr"], [dir="ltr"] *){left:1rem}
 .ltr\:ml-1:where([dir="ltr"], [dir="ltr"] *){margin-left:0.25rem}
 .ltr\:ml-2:where([dir="ltr"], [dir="ltr"] *){margin-left:0.5rem}
 .ltr\:ml-3:where([dir="ltr"], [dir="ltr"] *){margin-left:0.75rem}
@@ -7052,6 +7066,7 @@ svg {
 .rtl\:left-1\.5:where([dir="rtl"], [dir="rtl"] *){left:0.375rem}
 .rtl\:left-4:where([dir="rtl"], [dir="rtl"] *){left:1rem}
 .rtl\:right-0:where([dir="rtl"], [dir="rtl"] *){right:0px}
+.rtl\:right-4:where([dir="rtl"], [dir="rtl"] *){right:1rem}
 .rtl\:ml-0:where([dir="rtl"], [dir="rtl"] *){margin-left:0px}
 .rtl\:ml-1:where([dir="rtl"], [dir="rtl"] *){margin-left:0.25rem}
 .rtl\:ml-1\.5:where([dir="rtl"], [dir="rtl"] *){margin-left:0.375rem}
