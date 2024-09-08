@@ -6,26 +6,35 @@ theme.settings.get('important_links') %}
     <div class="inner py-2 bg-[#1C2029] rounded-b-2xl">
       <div class="container bg-[#1C2029] mx-auto rounded-b-xl">
         <div class="flex items-center justify-between relative">
-          {# Mobile menu button #}
+          {# Mobile menu button #} 
           {% if advertisement.icon %}
           <span class="{{ advertisement.icon }}"></span>
-        {% endif %}
-        {% if advertisement.url %}
-          <a href="{{ advertisement.url }}" {% if advertisement.is_new_window %} target='_blank' {% endif %}>
+          {% endif %} {% if advertisement.url %}
+          <a
+            href="{{ advertisement.url }}"
+            {%
+            if
+            advertisement.is_new_window
+            %}
+            target="_blank"
+            {%
+            endif
+            %}
+          >
             {{ advertisement.description }}
           </a>
-        {% else %}
+          {% else %}
           {{ advertisement.description }}
-        {% endif %}     <div class="flex items-center lg:flex-1">
-            <salla-menu source="header">
-           
-            </salla-menu>   <button
-                class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4"
-                aria-label="Toggle menu"
-                onclick="salla.event.dispatch('menu::open')"
-              >
-                <i class="sicon-menu text-white text-2xl"></i>
-              </button>
+          {% endif %}
+          <div class="flex items-center lg:flex-1">
+            {# Mobile menu #}
+            <div class="flex items-center">
+              <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu" >
+                <img src="{{ 'images/menu.png' | asset }}" alt="Menu" class="w-6 h-6 tint mb-1 " />
+              </a>
+      
+              <custom-main-menu></custom-main-menu>
+          </div>
           </div>
 
           {# Logo #}
@@ -77,28 +86,13 @@ theme.settings.get('important_links') %}
   </div>
 </header>
 
-{# Mobile menu #}
-<div id="mobile-menu" class="fixed inset-0 bg-[#1C2029] z-50 hidden">
-  <div class="container mx-auto py-4">
-    <button
-      onclick="toggleMobileMenu()"
-      class="text-white text-2xl absolute top-4 right-4"
-    >
-      &times;
-    </button>
-    <nav class="mt-12">
-      <salla-menu source="header" use-react-link="true"></salla-menu>
-    </nav>
-  </div>
-</div>
-
 {% if store.scope %}
 <salla-scopes
   selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
 ></salla-scopes>
 {% endif %} {# Bottom navigation for mobile #}
 <nav
-  class="lg:hidden fixed bottom-2 left-0 right-0 bg-[#1C2029] text-white z-50 shadow-lg w-[90%] mx-auto rounded-2xl "
+  class="lg:hidden fixed bottom-2 left-0 right-0 bg-[#1C2029] text-white z-50 shadow-lg w-[90%] mx-auto rounded-2xl"
 >
   <div class="flex items-center justify-around h-[60px]">
     <a href="{{ store.url }}" class="flex flex-col items-center">
@@ -154,8 +148,20 @@ theme.settings.get('important_links') %}
 </nav>
 
 <script>
-  function toggleMobileMenu() {
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.toggle("hidden");
-  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const menu = new MmenuLight(
+      document.querySelector("#mobile-menu"),
+      "(max-width: 1024px)"
+    );
+
+    const navigator = menu.navigation();
+    const drawer = menu.offcanvas();
+
+    document
+      .querySelector("a[href='#open-mobile-menu']")
+      .addEventListener("click", (evnt) => {
+        evnt.preventDefault();
+        drawer.open();
+      });
+  });
 </script>

@@ -114,12 +114,12 @@
                     </salla-button>
 
                     {# Calories Badge #}
-                    {% if product.calories %}
-                    <div class="absolute z-[2] top-4 rtl:left-4 ltr:right-4 bg-white shadow-sm flex flex-col justify-center items-center rounded-full w-20 h-20 md:w-24 md:h-24">
+                    {# {% if product.calories %}
+                        <div class="absolute z-[2] top-4 rtl:left-4 ltr:right-4 bg-white shadow-sm flex flex-col justify-center items-center rounded-full w-20 h-20 md:w-24 md:h-24">
                             <span class="text-red-500 text-xl leading-none font-bold">{{ product.calories }}</span>
                             <span class="text-xs text-gray-500">{{ trans('pages.products.calories') }}</span>
                         </div>
-                    {% endif %}
+                    {% endif %} #}
 
                     <div slot="items">
                         {% for image in product.images %}
@@ -144,11 +144,11 @@
                                     {% if loop.first %}
                                         <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}"
                                              alt="{{ image.alt }}"
-                                             class="h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }} border-none">
+                                             class=" h-full max-h-[500px] object-contain w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                     {% else %}
                                         <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}"
                                              alt="{{ image.alt }}"
-                                             class="lazy h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }} border-none">
+                                             class="lazy h-full max-h-[500px]  object-contain  w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                     {% endif %}
                                 </a>
                             {% endif %}
@@ -162,12 +162,12 @@
                                     {% if loop.index < 5 %}
                                         <img src="{{ image.url }}"
                                              loading="eager"
-                                             class="object-cover w-full h-full   rounded-md overflow-hidden border-none"
+                                             class="object-cover w-full h-full bg-gray-100 rounded-md overflow-hidden"
                                              title="{{ image.alt }}"
                                              alt="{{ image.alt }}"/>
                                     {% else %}
                                         <img data-src="{{ image.url }}" src="{{ 'images/s-empty.png' | cdn }}"
-                                             class="object-cover w-full h-full lazy   rounded-md overflow-hidden border-none"
+                                             class="object-cover w-full h-full lazy bg-gray-100 rounded-md overflow-hidden"
                                              title="{{ image.alt }}"
                                              alt="{{ image.alt }}"/>
                                     {% endif %}
@@ -181,10 +181,10 @@
             <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
 
                 {% hook 'product:single.description.start' %}
-
+ <div class="glass-effect bg-opacity-20 backdrop-filter backdrop-blur-lg bg-white rounded-lg p-6 shadow-xl text-white">
                 {% if product.brand.name %}
-                    <div class="product-brand mb-5 w-12">
-                        <a class="brand-logo" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
+                    <div class="product-brand mb-4 w-14">
+                        <a class="brand-logo hover:opacity-80 transition-opacity" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
                             <img width="100%" height="100%" class="max-h-full object-contain"
                                  src="{{ product.brand.logo }}"
                                  title="{{ product.brand.name }}"
@@ -194,16 +194,37 @@
                 {% endif %}
 
                 {% if product.is_taxable %}
-                    <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
+                    <small class="text-white text-sm italic">{{ trans('pages.products.tax_included') }}</small>
                 {% endif %}
 
-                <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-color">{{ product.name }}</h1>
+                <h1 class="text-xl md:text-2xl leading-tight font-bold mb-3 text-white">{{ product.name }}</h1>
 
                 {% if product.subtitle %}
-                    <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
+                    <h2 class="text-base text-white leading-relaxed mb-3">
                         {{ product.subtitle }}
                     </h2>
                 {% endif %}
+                <div class="  text-white text-sm leading-relaxed mb-4">
+                    
+                    {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
+                    {% if product.has_read_more %}
+                        <article class="article article--main relative transition-all max-h-32 duration-300"
+                            id="more-content">
+                            {{ product_des|r }}
+                        </article>
+
+                        <button id="btn-show-more" class="text-primary-600 hover:text-primary-700 text-sm font-semibold mt-2 focus:outline-none transition-colors duration-200">
+                            {{ trans('pages.products.read_more') }}
+                        </button>
+                    {% else %}
+                        <article class="article--main">
+                            {{ product_desc|raw }}
+                        </article>
+                    {% endif %}
+
+                </div>
+ </div>
+
 
                 {% if product.rating %}
                     <salla-rating-stars value="{{ product.rating.stars }}"
@@ -224,24 +245,7 @@
                   </div>
                 </div>
 
-                <div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3">
-                    {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
-                    {% if product.has_read_more %}
-                        <article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4"
-                            id="more-content" style="max-height:5.25rem">
-                            {{ product_desc|raw }}
-                        </article>
 
-                        {# Read More Button #}
-                        <a id="btn-show-more" class="link--primary inline-block mt-2 cursor-pointer">
-                            {{ trans('pages.products.read_more') }}
-                        </a>
-                    {% else %}
-                        <article class="article--main pb-1">
-                            {{ product_desc|raw }}
-                        </article>
-                    {% endif %}
-                </div>
 
                 {% if product.tags|length and theme.settings.get('show_tags', true) %}
                     <div class="mb-3">
@@ -336,7 +340,7 @@
 
                     <section class="flex bg-white p-5 sm:pb-0 rounded-md rounded-b-none">
                         <div class="center-between w-full">
-                            <label class="text-color">
+                            <label class="form-label">
                                 <b class="block">
                                     {{ trans('pages.products.price') }}
                                 </b>
@@ -406,9 +410,7 @@
         <salla-offer></salla-offer>
     </div>
 
-    {# 
-    
-    Comments Area #}
+    {# Comments Area #}
     <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
     
     {# Similar Products Area #}
@@ -423,4 +425,3 @@
         <script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     {% endif %}
 {% endblock %}
-
