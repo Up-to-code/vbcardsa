@@ -181,7 +181,7 @@
             <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
 
                 {% hook 'product:single.description.start' %}
- <div class="glass-effect bg-opacity-20 backdrop-filter backdrop-blur-lg bg-white rounded-lg p-6 shadow-xl text-white">
+ <div class="glass-effect bg-opacity-20 backdrop-filter backdrop-blur-lg bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-lg p-6 shadow-xl text-white">
                 {% if product.brand.name %}
                     <div class="product-brand mb-4 w-14">
                         <a class="brand-logo hover:opacity-80 transition-opacity" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
@@ -206,21 +206,43 @@
                 {% endif %}
                 <div class="  text-white text-sm leading-relaxed mb-4">
                     
-                    {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
-                    {% if product.has_read_more %}
-                        <article class="article article--main relative transition-all max-h-32 duration-300"
-                            id="more-content">
-                            {{ product_des|r }}
-                        </article>
+                    {% set product_desc = product.description|replace({"&nbsp;": " "})|striptags('<p><br><strong><em>') %} {# Replace &nbsp; with space, allow only specific HTML tags #}
 
-                        <button id="btn-show-more" class="text-primary-600 hover:text-primary-700 text-sm font-semibold mt-2 focus:outline-none transition-colors duration-200">
-                            {{ trans('pages.products.read_more') }}
-                        </button>
-                    {% else %}
-                        <article class="article--main">
-                            {{ product_desc|raw }}
-                        </article>
-                    {% endif %}
+                        {% if product.has_read_more %}
+                            <article class="article article--main relative transition-all max-h-32 duration-300"
+                                id="more-content">
+                                {{ product_desc|raw }} {# Show content with only allowed tags #}
+                            </article>
+                        
+                            <button id="btn-show-more" class="text-primary-600 hover:text-primary-700 text-sm font-semibold mt-2 focus:outline-none transition-colors duration-200">
+                                {{ trans('pages.products.read_more') }}
+                            </button>
+                        {% else %}
+                            <article class="article--main">
+                                {{ product_desc|raw }} {# Display the sanitized description safely #}
+                            </article>
+                        {% endif %}
+                    <div class="bg-white rounded-lg p-4 mt-4 shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 font-semibold">{{ trans('pages.products.coupon') }}:</span>
+                            <div class="flex items-center">
+                                <input type="text" id="coupon-input" class="border border-gray-300 rounded-l px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="{{ trans('pages.products.enter_coupon') }}">
+                                <button onclick="copyCoupon()" class="bg-primary-500 hover:bg-primary-600 text-white font-bold py-1 px-3 rounded-r focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
+                                    {{ trans('common.copy') }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function copyCoupon() {
+                            var couponInput = document.getElementById('coupon-input');
+                            couponInput.select();
+                            document.execCommand('copy');
+                            alert("{{ trans('pages.products.coupon_copied') }}");
+                        }
+                    </script>
+                    
+                    
 
                 </div>
  </div>
@@ -398,6 +420,9 @@
                             {{ product.add_to_cart_label }}
                         </salla-add-product-button>
                     </section>
+
+
+
                     {% if product.is_giftable %}
                         <salla-gifting class="mt-5" widget-subtitle="{{ gifting_intro }}" product-id="{{ product.id }}"></salla-gifting>
                     {% endif %}
@@ -417,6 +442,11 @@
     <div class="container">
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
     </div>
+  <div>
+    <h1>
+      {{ product.name }}
+    </h1>
+  </div>
 {% endblock %}
 
 {% block scripts %}
