@@ -17,17 +17,15 @@ theme.settings.get('important_links') %}
         {% else %}
           {{ advertisement.description }}
         {% endif %}     <div class="flex items-center lg:flex-1">
-            <button
-              class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4"
-              aria-label="Toggle menu"
-              onclick="toggleMobileMenu()"
-            >
-              <i class="sicon-menu text-white text-2xl"></i>
-            </button>
-            {# Desktop menu #}
-            <nav class="hidden lg:block lg:ml-4">
-           <salla-
-            </nav>
+            <salla-menu source="header">
+           
+            </salla-menu>   <button
+                class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4"
+                aria-label="Toggle menu"
+                onclick="salla.event.dispatch('menu::open')"
+              >
+                <i class="sicon-menu text-white text-2xl"></i>
+              </button>
           </div>
 
           {# Logo #}
