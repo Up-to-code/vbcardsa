@@ -103,8 +103,8 @@
                         <div class="promotion-title">{{ product.promotion_title }}</div>
                     {% endif %}
 
-                    <div class="absolute top-4 left-4 right-4 flex justify-between z-10">
-                        {# <salla-button
+                    {#   <div class="absolute top-4 left-4 right-4 flex justify-between z-10">
+                      <salla-button
                                 class="btn--wishlist animated sws"
                                 data-id="{{ product.id }}"
                                 onclick="salla.wishlist.toggle({{ product.id }})"
@@ -186,7 +186,9 @@
             <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
 
                 {% hook 'product:single.description.start' %}
- <div class="glass-effect bg-opacity-20 backdrop-filter backdrop-blur-lg bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-lg p-6 shadow-xl text-white">
+
+
+ <div class="glass-effect bg-opacity-20 backdrop-filter backdrop-blur-lg bg-gradient-to-r  rounded-lg p-6 shadow-xl text-white">
                 {% if product.brand.name %}
                     <div class="product-brand mb-4 w-14">
                         <a class="brand-logo hover:opacity-80 transition-opacity" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
@@ -461,8 +463,36 @@
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
     </div>
   <div class="container">
-   
-  </div>
+    {# /////////////////////// #}
+
+    <div class=" max-w-[800px] mx-auto font-sans bg-[#1c1c1f] rounded-lg p-6 shadow-lg my-12 w-[90%] rounded-xl ">
+        <h3 class="text-2xl font-bold text-white mb-6 text-center">المزيد من المنتجات</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-items-center">
+          {# {% for item in component.m %} #}
+          {% for item in theme.settings.get('mzayh') %}
+          <a
+            href="{{item.url}}"
+            class="flex flex-col items-center text-white text-center transition-transform duration-300 ease-in-out hover:scale-105"
+          >
+            <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary mb-3 shadow-md">
+              <img
+                src="{{item.image}}"
+                alt="{{item.title}}"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <span class="text-sm font-medium"> {{item.title}} </span>
+           </a>
+           {% endfor %}
+          {# {% endfor %} #}
+        </div>
+      </div>
+      
+
+
+
+    {# /////////////////////// #}
+</div>
 {% endblock %}
 
 {% block scripts %}
