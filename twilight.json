@@ -62,18 +62,6 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "mzayh.image",
-                    "type": "string",
-                    "format": "image",
-                    "label": "Image",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "e.g. https://hostname.com/image.png",
-                    "icon": "sicon-image",
-                    "value": null,
-                    "required": false
-                },
-                {
                     "id": "mzayh.url",
                     "type": "string",
                     "format": "url",
@@ -87,6 +75,18 @@
                     "required": false,
                     "minLength": 6,
                     "maxLength": 30
+                },
+                {
+                    "id": "mzayh.image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "Image",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": null,
+                    "required": false
                 }
             ],
             "value": [],
@@ -104,7 +104,7 @@
             "placeholder": "e.g. https://salla.sa",
             "icon": "sicon-link",
             "value": null,
-            "required": false,
+            "required": true,
             "minLength": 6,
             "maxLength": 30
         },
