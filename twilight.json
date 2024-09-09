@@ -37,6 +37,18 @@
             "selected": false
         },
         {
+            "id": "test",
+            "type": "boolean",
+            "format": "switch",
+            "label": "test",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": true,
+            "required": true
+        },
+        {
             "id": "whatsapp",
             "type": "string",
             "format": "url",
@@ -47,7 +59,7 @@
             "placeholder": "e.g. https://salla.sa",
             "icon": "sicon-link",
             "value": null,
-            "required": false,
+            "required": true,
             "minLength": 6,
             "maxLength": 30
         },
