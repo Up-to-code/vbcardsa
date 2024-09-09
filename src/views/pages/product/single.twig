@@ -103,23 +103,26 @@
                         <div class="promotion-title">{{ product.promotion_title }}</div>
                     {% endif %}
 
-                    <salla-button
-                            class="btn--wishlist animated sws"
-                            data-id="{{ product.id }}"
-                            onclick="salla.wishlist.toggle({{ product.id }})"
-                            shape="icon"
-                            fill="outline"
-                            color="light">
-                        <i class="sicon-heart"></i>
-                    </salla-button>
+                    <div class="absolute top-4 left-4 right-4 flex justify-between z-10">
+                        <salla-button
+                                class="btn--wishlist animated sws"
+                                data-id="{{ product.id }}"
+                                onclick="salla.wishlist.toggle({{ product.id }})"
+                                shape="icon"
+                                fill="outline"
+                                color="light">
+                            <i class="sicon-heart"></i>
+                        </salla-button>
 
-                    {# Calories Badge #}
-                    {# {% if product.calories %}
-                        <div class="absolute z-[2] top-4 rtl:left-4 ltr:right-4 bg-white shadow-sm flex flex-col justify-center items-center rounded-full w-20 h-20 md:w-24 md:h-24">
-                            <span class="text-red-500 text-xl leading-none font-bold">{{ product.calories }}</span>
-                            <span class="text-xs text-gray-500">{{ trans('pages.products.calories') }}</span>
-                        </div>
-                    {% endif %} #}
+                        <salla-button
+                                class="btn--share animated sws"
+                                onclick="salla.share.popup('{{ product.id }}')"
+                                shape="icon"
+                                fill="outline"
+                                color="light">
+                            <i class="sicon-share-alt"></i>
+                        </salla-button>
+                    </div>
 
                     <div slot="items">
                         {% for image in product.images %}
@@ -165,12 +168,14 @@
                                              class="object-cover w-full h-full bg-gray-100 rounded-md overflow-hidden"
                                              title="{{ image.alt }}"
                                              alt="{{ image.alt }}"/>
+                                             
                                     {% else %}
                                         <img data-src="{{ image.url }}" src="{{ 'images/s-empty.png' | cdn }}"
                                              class="object-cover w-full h-full lazy bg-gray-100 rounded-md overflow-hidden"
                                              title="{{ image.alt }}"
                                              alt="{{ image.alt }}"/>
                                     {% endif %}
+                                    
                                 </div>
                             {% endfor %}
                         </div>
@@ -198,14 +203,24 @@
                 {% endif %}
 
                 <h1 class="text-xl md:text-2xl leading-tight font-bold mb-3 text-white">{{ product.name }}</h1>
-
+               
                 {% if product.subtitle %}
                     <h2 class="text-base text-white leading-relaxed mb-3">
                         {{ product.subtitle }}
                     </h2>
                 {% endif %}
+                {#  start rating #}
                 <div class="  text-white text-sm leading-relaxed mb-4">
+                    <div class="flex items-center mb-2">
+                        {% for i in 1..5 %}
+                            <svg class="w-5 h-5 {% if i <= product.rating.stars %}text-yellow-400{% else %}text-gray-300{% endif %}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        {% endfor %}
+                        <span class="ml-2 text-sm text-white">{{ product.rating.stars }}</span>
+                    </div>
                     
+                    {#   description product #}
                     {% set product_desc = product.description|replace({"&nbsp;": " "})|striptags('<p><br><strong><em>') %} {# Replace &nbsp; with space, allow only specific HTML tags #}
 
                         {% if product.has_read_more %}
@@ -222,26 +237,42 @@
                                 {{ product_desc|raw }} {# Display the sanitized description safely #}
                             </article>
                         {% endif %}
-                    <div class="bg-white rounded-lg p-4 mt-4 shadow-sm">
+                       {#  end description product #}
+
+                        {# coupon  addd get settings from theme settings #}
+                    <div class="bg-gray-800 rounded-lg p-4 mt-4 shadow-sm">
                         <div class="flex items-center justify-between">
-                            <span class="text-gray-700 font-semibold">{{ trans('pages.products.coupon') }}:</span>
-                            <div class="flex items-center">
-                                <input type="text" id="coupon-input" class="border border-gray-300 rounded-l px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="{{ trans('pages.products.enter_coupon') }}">
-                                <button onclick="copyCoupon()" class="bg-primary-500 hover:bg-primary-600 text-white font-bold py-1 px-3 rounded-r focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
-                                    {{ trans('common.copy') }}
-                                </button>
-                            </div>
+                            <span id="coupon-code" class="text-gray-300 font-semibold">FAKE2023</span>
+                            <button id="copy-coupon-btn" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                                {{ trans('common.copy') }}
+                            </button>
                         </div>
                     </div>
                     <script>
-                        function copyCoupon() {
-                            var couponInput = document.getElementById('coupon-input');
-                            couponInput.select();
-                            document.execCommand('copy');
-                            alert("{{ trans('pages.products.coupon_copied') }}");
-                        }
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const copyButton = document.getElementById('copy-coupon-btn');
+                            const couponCode = document.getElementById('coupon-code');
+                            
+                            copyButton.addEventListener('click', function() {
+                                const tempInput = document.createElement('input');
+                                tempInput.value = couponCode.textContent;
+                                document.body.appendChild(tempInput);
+                                tempInput.select();
+                                
+                                try {
+                                    document.execCommand('copy');
+                                 } catch (err) {
+                                    console.error('Failed to copy: ', err);
+                                }
+                                
+                                document.body.removeChild(tempInput);
+                            });
+                        });
                     </script>
-                    
+                     {# end coupon #}
                     
 
                 </div>
@@ -279,20 +310,7 @@
                     </div>
                 {% endif %}
 
-                <div class="flex rtl:space-x-reverse space-x-3">
-                    <salla-social-share class="inline-flex mb-5" aria-label="social share"></salla-social-share>
 
-                    <salla-button
-                            class="btn--wishlist animated hidden sm:inline-flex"
-                            data-id="{{ product.id }}"
-                            onclick="salla.wishlist.toggle({{ product.id }})"
-                            shape="icon"
-                            fill="outline"
-                            color="light"
-							aria-label="add to wishlist">
-                        <i class="sicon-heart"></i>
-                    </salla-button>
-                </div>
 
                 {% if product.sold_quantity or product.can_show_remained_quantity %}
                     <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm">
@@ -442,10 +460,8 @@
     <div class="container">
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
     </div>
-  <div>
-    <h1>
-      {{ product.name }}
-    </h1>
+  <div class="container">
+   
   </div>
 {% endblock %}
 
