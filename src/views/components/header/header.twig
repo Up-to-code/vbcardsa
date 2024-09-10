@@ -74,11 +74,19 @@ theme.settings.get('important_links') %}
                   {{ cart.items_count }}
                 </span>
               </salla-cart-summary>
-            </div>
+            </div> 
 
-            <div class="hidden lg:block">
-              <salla-user-menu avatar-only show-header></salla-user-menu>
-            </div>
+
+            <div class="flex items-center justify-end mr-4">
+              {% if user.type=='user' %}
+                <salla-user-menu avatar-only show-header></salla-user-menu>
+              {% else %}
+                  <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
+                    <i class="text-white w-6 h-6  sicon-user-circle text-[25px]"></i>
+                  </button>
+              {% endif %}
+ 
+            
           </div>
         </div>
       </div>
