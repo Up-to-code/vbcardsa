@@ -89,7 +89,7 @@
             <salla-breadcrumb></salla-breadcrumb>
         </nav>
         <div class="flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
-            <div class="sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 pb-8 md:pb-16 overflow-hidden shrink-0">
+            <div class="sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 pb-8 md:pb-16 overflow-hidden shrink-0  ">
                 {% set has_many_images = product.images|length > 1 %}
                 <salla-slider
                         id="details-slider-{{ product.id }}"
@@ -102,29 +102,9 @@
                     {% if product.promotion_title %}
                         <div class="promotion-title">{{ product.promotion_title }}</div>
                     {% endif %}
+ 
 
-                    {#   <div class="absolute top-4 left-4 right-4 flex justify-between z-10">
-                      <salla-button
-                                class="btn--wishlist animated sws"
-                                data-id="{{ product.id }}"
-                                onclick="salla.wishlist.toggle({{ product.id }})"
-                                shape="icon"
-                                fill="outline"
-                                color="light">
-                            <i class="sicon-heart"></i>
-                        </salla-button>
-
-                        <salla-button
-                                class="btn--share animated sws"
-                                onclick="salla.share.popup('{{ product.id }}')"
-                                shape="icon"
-                                fill="outline"
-                                color="light">
-                            <i class="sicon-share-alt"></i>
-                        </salla-button>
-                    </div> #}
-
-                    <div slot="items">
+                    <div slot="items" class="relative">
                         {% for image in product.images %}
                             {% if image.three_d_image_url %}
                                 <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full"
@@ -156,7 +136,10 @@
                                 </a>
                             {% endif %}
                         {% endfor %}
+
                     </div>
+
+ 
 
                     {% if has_many_images %}
                         <div slot="thumbs">
@@ -181,7 +164,48 @@
                         </div>
                     {% endif %}
                 </salla-slider>
+                <div class="   flex justify-between z-50 w-[80%] mx-[10%] absolute bottom-[15%] ">
+                    <salla-button
+                    class="btn--wishlist animated"
+                    data-id="{{ product.id }}"
+                    onclick="salla.wishlist.toggle({{ product.id }})"
+                    shape="icon"
+                    fill="outline"
+                    color="light">
+                <i class="sicon-heart"></i>
+            </salla-button>
+    
+            <salla-button
+                    class="btn--share animated"
+                    onclick="salla.share.popup('{{ product.id }}')"
+                    shape="icon"
+                    fill="outline"
+                    color="light">
+                <i class="sicon-share-alt"></i>
+            </salla-button>
+                </div>
             </div>
+            <div class="   flex justify-between z-50 w-[80%] mx-[10%]  md:hidden ">
+                <salla-button
+                class="btn--wishlist animated"
+                data-id="{{ product.id }}"
+                onclick="salla.wishlist.toggle({{ product.id }})"
+                shape="icon"
+                fill="outline"
+                color="light">
+            <i class="sicon-heart"></i>
+        </salla-button>
+
+        <salla-button
+                class="btn--share animated"
+                onclick="salla.share.popup('{{ product.id }}')"
+                shape="icon"
+                fill="outline"
+                color="light">
+            <i class="sicon-share-alt"></i>
+        </salla-button>
+            </div>
+
 
             <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
 
@@ -291,6 +315,7 @@
                   <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
                       <h4 class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h4>
                       <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
+                    
                   </div>
                   <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
                       {% if product.starting_price %} 
@@ -298,16 +323,64 @@
                       {% endif %} 
                           <h2 class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
                   </div>
-                </div>
+             
+                 </div>
+
+
+                 <div class="bg-gray-100 p-4 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg max-w-[200px] ">
+                      <div class="flex items-center justify-between mb-2">
+                           <p class="flex items-center text-lg font-semibold rtl:flex-row-reverse gap-2">
+                                <i class="sicon-coin-dollar text-primary ltr:mr-2 rtl:ml-2"></i>
+                                {{trans('pages.product.pay_is')}}
+                           </p>
+                           <i class="sicon-box text-gray-500"></i>
+                      </div>
+                      <div class="text-3xl font-bold text-primary text-center" id="animated-price">0</div>
+                 </div>
+                 <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const animatedPrice = document.getElementById('animated-price');
+                        const targetPrice = {{ product.price }};
+                        let currentPrice = 0;
+                        const duration = 1000; // 1 second
+                        const steps = 60;
+                        const increment = targetPrice / steps;
+                        
+                        function animatePrice(timestamp) {
+                            if (!animatePrice.start) animatePrice.start = timestamp;
+                            const elapsed = timestamp - animatePrice.start;
+                            
+                            if (elapsed < duration) {
+                                currentPrice = Math.min(targetPrice, increment * (elapsed / (duration / steps)));
+                                animatedPrice.textContent = currentPrice.toFixed(2);
+                                requestAnimationFrame(animatePrice);
+                            } else {
+                                animatedPrice.textContent = targetPrice.toFixed(2);
+                            }
+                        }
+
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    requestAnimationFrame(animatePrice);
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, {threshold: 0.1});
+
+                        observer.observe(animatedPrice);
+                    });
+                 </script>
 
 
 
                 {% if product.tags|length and theme.settings.get('show_tags', true) %}
-                    <div class="mb-3">
+                    <div class="mb-4 flex flex-wrap my-2">
                         {% for tag in product.tags %}
                             <a href="{{ tag.url }}"
-                               class="rtl:ml-2 ltr:mr-2 inline-flex  text-gray-500 hover:text-primary underline text-sm mb-1">{{ tag.name }}
-                                ,</a>
+                               class=" bg-zinc-700 text-gray-100 hover:bg-primary hover:text-white transition-colors duration-300 rounded-full px-3 py-1 text-sm font-medium mr-2 mb-2">
+                                {{ tag.name }}
+                            </a>
                         {% endfor %}
                     </div>
                 {% endif %}
@@ -380,8 +453,9 @@
 
                     {% hook 'product:single.form.end' %}
 
-                    <section class="flex bg-white p-5 sm:pb-0 rounded-md rounded-b-none">
-                        <div class="center-between w-full">
+
+                    <section class="sticky-product-bar bg-white p-5 rounded-md rounded-b-none ">      
+                         <div class="center-between w-full">
                             <label class="form-label">
                                 <b class="block">
                                     {{ trans('pages.products.price') }}
@@ -403,8 +477,7 @@
 
                             <div class="out-of-stock min-h-7 leading-7 hidden text-base text-red-600 !opacity-50 font-bold">{{ trans('pages.products.out_of_stock')}}</div>
                         </div>
-                    </section>
-                    <section class="sticky-product-bar bg-white p-5 rounded-md rounded-b-none">
+                   
                         {# Quantity #}
                         {% if product.is_hidden_quantity or product.type == 'booking' %}
                             <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
@@ -465,11 +538,13 @@
   <div class="container">
     {# /////////////////////// #}
 
+    <p class="text-center text-2xl font-bold text-white"> 
+        {{
+          theme.settings.get('test') ? 'true' : 'false' 
+        }}
+    </p>
 
-       {% if theme.settings.get('test') == true %}
-       <h1 class="text-center text-2xl font-bold text-white">test</h1>
-       {% endif %}
-
+ 
 
 
     {# /////////////////////// #}

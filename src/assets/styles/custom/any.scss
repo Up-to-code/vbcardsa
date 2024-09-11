@@ -257,3 +257,36 @@ svg {
     
   }
 }
+@media (max-width: 640px) {
+  .sticky-product-bar{
+     width: 90% !important; 
+     left: 5% !important;
+     bottom: 80px !important;
+  }
+}
+.s-button{
+  &-wrap{
+    
+  }
+  &-element{
+    border-radius: 9999px; // This adds full rounded corners
+  }
+  &-link{
+    
+  }
+  &-icon{
+    
+  }
+  &-primary{
+    
+  }
+  &-secondary{
+    
+  }
+  &-dark{
+    
+  }
+}
+.s-login-modal-label{
+  color: white !important;
+}

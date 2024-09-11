@@ -7,9 +7,13 @@
       "download_now": "download now"
     }
   },
+  
   "pages": {
     "cart": {
       "cart_options": "Cart Options"
+    },
+    "product": {
+      "pay_is": "Pays"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "You can edit or delete your review within",

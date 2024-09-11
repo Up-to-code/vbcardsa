@@ -77,17 +77,21 @@ theme.settings.get('important_links') %}
             </div> 
 
 
-            <div class="flex items-center justify-end mr-4">
+            <div class="flex items-center justify-end mr-4 hidden md:flex">
               {% if user.type=='user' %}
-                <salla-user-menu avatar-only show-header></salla-user-menu>
+                <salla-user-menu avatar-only show-header class="hover:opacity-80 transition-opacity"></salla-user-menu>
               {% else %}
-                  <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
-                    <i class="text-white w-6 h-6  sicon-user-circle text-[25px]"></i>
+                  <button class="header-btn hover:bg-gray-700 transition-colors rounded-full p-2" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
+                    <i class="text-white w-6 h-6 sicon-user-circle text-[25px]"></i>
                   </button>
               {% endif %}
- 
-            
-          </div>
+            </div>
+
+            {% if not is_page('index') %}
+              <a href="javascript:history.back()" class="header-btn  hover:opacity-90 transition-colors rounded-full p-2 ml-2" aria-label="back-button">
+                <i class="sicon-arrow-left text-white text-[25px] hover:text-primary"></i>
+              </a>
+            {% endif %}
         </div>
       </div>
     </div>

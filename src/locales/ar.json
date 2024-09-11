@@ -8,6 +8,9 @@
     }
   },
   "pages": {
+    "product": {
+      "pay_is": "اشترا"
+    },
     "cart": {
       "cart_options": "خيارات السلة"
     },
