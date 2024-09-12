@@ -37,10 +37,10 @@
             "selected": false
         },
         {
-            "id": "test",
+            "id": "show_whatsapp",
             "type": "boolean",
             "format": "switch",
-            "label": "test",
+            "label": "عرضواتس اب",
             "description": null,
             "labelHTML": null,
             "icon": "sicon-toggle-off",
@@ -62,6 +62,62 @@
             "required": true,
             "minLength": 6,
             "maxLength": 30
+        },
+        {
+            "id": "claints",
+            "type": "collection",
+            "format": "collection",
+            "label": "خدمة العملاء",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "claints.string",
+                    "type": "string",
+                    "format": "text",
+                    "label": "String",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": true,
+                    "minLength": "3",
+                    "maxLength": 30
+                },
+                {
+                    "id": "claints.icon_picker",
+                    "type": "string",
+                    "format": "icon",
+                    "label": "Icon Picker",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-user-circle",
+                    "value": "sicon-image1",
+                    "required": true
+                },
+                {
+                    "id": "claints.url",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "URL",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": true,
+                    "minLength": 6,
+                    "maxLength": 30
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 5
         },
         {
             "type": "boolean",
