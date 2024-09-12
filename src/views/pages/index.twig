@@ -7,6 +7,31 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
+<salla-button onclick="modal.open()">Click Me!</salla-button>
+<!-- Modal Settings -->
+<salla-modal
+        id="modal"
+        title="Title Header"
+        sub-title="Title Sub-Header"
+        icon="sicon-alert-engine"
+        position="middle"
+        width="xs"
+        is-closable="true">
+    
+    <!-- Some awesome content within the modal. Custom Slot for the Modal-->
+    <div slot="footer">
+        <salla-button width="wide" onclick="modal.close()">Close</salla-button>
+    </div>
+    
+</salla-modal>
+
+<!-- Button to open the Login Component-->
+<salla-button width="wide" onClick="salla.event.emit('login::open')">
+    Login
+  </salla-button>
+  
+
+
     {% component home %}
 {% endblock %}
 {% block scripts %}

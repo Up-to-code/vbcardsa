@@ -11,10 +11,20 @@
 					</p>
 				{% endif %}
 
-				<div class="hidden lg:block">
-					<salla-social class="mb-6"></salla-social>
-				</div>
-
+				{# <ul>
+					{% for link in links %}
+						<li>
+							<a href="{{ link.url }}" title="link.name" aria-label="{{ link.name }}">
+								<i class="sicon-{{ link.type }}"></i>
+							</a>
+						</li>
+					{% endfor %}
+				</ul> #}
+				{# <salla-social-share></salla-social-share> #}
+           <salla-social>
+			
+		   </salla-social>
+              
           {# vat #}
           {% if store.settings.tax.number %}
             <div class="flex rtl:space-x-reverse space-x-2 items-end">
