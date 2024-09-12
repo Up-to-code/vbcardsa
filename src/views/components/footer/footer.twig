@@ -1,29 +1,38 @@
 <footer class="store-footer mb-[60px]">
 	<div aria-label="footer" class="store-footer__inner">
-		<div class="container grid grid-col-1 lg:grid-cols-6 gap-8 lg:gap-6">
+		<div class="container grid grid-col-1 lg:grid-cols-6 gap-8 lg:gap-6 justify-center md:justify-start">
 			<div class="lg:col-span-2 rtl:lg:pl-20 ltr:lg:pr-20">
-				<a href="{{ link('/') }}" class="flex items-center m-0">
-					<h3>{{store.name}}</h3>
-				</a>
+
+
+ <div class=" mx-5">
+	                 {% if store.logo %}
+
+				<div class="flex items-center justify-center md:justify-start">
+					<img class="w-full max-w-20 md:max-w-24" loading="lazy" 
+					src="{{ store.logo }}"
+					data-src="{{ 'images/logo.png' | cdn(70,70) }}" 
+					alt="{{ store.name }}"/>	
+				</div>
+				{% else %}
+                        <div class="flex items-center justify-center md:justify-start">
+							<a href="{{ store.url }}" class="w-full max-w-20 md:max-w-24">
+								<h2>{{ store.name }}</h2>
+							</a>
+						</div>
+                {% endif %}
+ </div>
+
+			  
+
+
 				{% if store.description %}
-					<p class="max-w-sm leading-6 mb-6">
+					<p class="max-w-sm leading-6 mb-6 text-center md:text-end">
 						{{ store.description|raw }}
 					</p>
 				{% endif %}
 
-				{# <ul>
-					{% for link in links %}
-						<li>
-							<a href="{{ link.url }}" title="link.name" aria-label="{{ link.name }}">
-								<i class="sicon-{{ link.type }}"></i>
-							</a>
-						</li>
-					{% endfor %}
-				</ul> #}
-				{# <salla-social-share></salla-social-share> #}
-           <salla-social>
-			
-		   </salla-social>
+ 				{# <salla-social-share></salla-social-share> #}
+				 {% component 'footer.social' %}
               
           {# vat #}
           {% if store.settings.tax.number %}
