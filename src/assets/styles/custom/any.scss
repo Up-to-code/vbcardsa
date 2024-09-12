@@ -323,3 +323,26 @@ svg {
   border: none !important;
   border-color: transparent !important;
 }
+.store-footer a{
+  border: none !important;
+  padding: 0 !important;
+}
+.s-social-link a svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: currentColor;
+}
+.s-social-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media   (min-width: 640px) {
+  .s-social-list{
+    flex-direction: row;
+    justify-content: start;
+    gap: 1rem;
+  }
+}

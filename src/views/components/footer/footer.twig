@@ -32,7 +32,7 @@
 				{% endif %}
 
  				{# <salla-social-share></salla-social-share> #}
-				 {% component 'footer.social' %}
+				<salla-social></salla-social>
               
           {# vat #}
           {% if store.settings.tax.number %}
@@ -61,17 +61,17 @@
           {% endif %}
         </div>
 
-			<div>
+			<div class="flex flex-col items-center md:items-start">
 				<h3>{{ trans('blocks.footer.pages_links') }}</h3>
 				<salla-menu source="footer"></salla-menu>
 			</div>
 
-			<div>
+			<div>	
+		
+
 				<salla-contacts></salla-contacts>
 
-				<div class="lg:hidden contact-social">
-					<salla-social></salla-social>
-				</div>
+			
 			</div>
 
 			<salla-apps-icons class="lg:col-span-2 rtl:lg:pr-20 ltr:lg:pl-20"></salla-apps-icons>

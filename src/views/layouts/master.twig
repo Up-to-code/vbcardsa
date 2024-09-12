@@ -168,6 +168,10 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
     <div class="app-inner flex flex-col min-h-full">
       {% hook 'body:start' %} {% component 'header.header' %} {% block content
       %} {% endblock %} {% component 'footer.footer' %} {# whatsapp #}
+      
+
+      {# whatsapp #}
+      {% if theme.settings.get('show_whatsapp') %}
       <div>
         {% if theme.settings.get('whatsapp') %}
         <a
@@ -179,6 +183,7 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
         </a>
         {% endif %}
       </div>
+      {% endif %}
     </div>
 
     {% hook 'body:end' %}
