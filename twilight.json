@@ -46,7 +46,7 @@
             "icon": "sicon-toggle-off",
             "value": true,
             "selected": true,
-            "required": true
+            "required": false
         },
         {
             "id": "whatsapp",
@@ -74,10 +74,10 @@
             "icon": "sicon-list-add",
             "fields": [
                 {
-                    "id": "claints.string",
+                    "id": "claints.title",
                     "type": "string",
                     "format": "text",
-                    "label": "String",
+                    "label": "title",
                     "description": null,
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
