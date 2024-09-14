@@ -6878,7 +6878,7 @@ svg {
 .s-quantity-input-container {
   border: none !important;
 }
-.s-comment-form-input, .s-form-control, .s-quantity-input-input {
+.s-quantity-input-container > .s-comment-form-input, .s-form-control, .s-quantity-input-input {
   background-color: transparent !important;
   color: white !important;
   border: none !important;
@@ -6937,6 +6937,12 @@ svg {
     gap: 1rem;
     align-items: center;
   }
+}
+.s-product-card-entry {
+  max-height: 500px !important;
+}
+.carousel-slider .s-slider-block__title-nav {
+  display: none;
 }
 .s-user-menu-trigger {
   background: transparent !important;
