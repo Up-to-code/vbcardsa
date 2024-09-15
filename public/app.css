@@ -6645,6 +6645,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
   background-color: #474f65;
   color: white;
   border: #424758;
+  border-radius: 50px;
 }
 .s-modal-close {
   background: transparent !important;
@@ -6670,6 +6671,15 @@ lite-youtube.lyt-activated > .lty-playbtn {
 }
 .s-login-modal-label {
   font-weight: bold;
+}
+.btn {
+  border-radius: 50px !important;
+}
+.s-login-modal-input {
+  background-color: #474f65;
+  color: white;
+  border: #424758;
+  border-radius: 50px;
 }
 .copyright-text p {
   color: white;
