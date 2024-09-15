@@ -12,6 +12,7 @@
   background-color: #474f65;
   color: white;
   border: #424758;
+  border-radius: 50px;
 }
 .s-modal-close {
   background: transparent !important;
@@ -39,4 +40,13 @@
 .s-login-modal-label {
   color: white !important;
   font-weight: bold;
+}
+.btn {
+  border-radius: 50px !important;
+}
+.s-login-modal-input {
+  background-color: #474f65;
+  color: white;
+  border: #424758;
+  border-radius: 50px;
 }
