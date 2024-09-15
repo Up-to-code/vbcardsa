@@ -6917,9 +6917,6 @@ svg {
 .s-button-element {
   border-radius: 9999px;
 }
-.s-login-modal-label {
-  color: white !important;
-}
 .s-quantity-input-container {
   border: none !important;
 }
@@ -7013,9 +7010,16 @@ svg {
 .s-user-menu-dropdown:hover {
   z-index: 1000 !important;
 }
+.s-login-modal-header-content,
 .s-login-modal-label,
 .s-login-modal-title {
   color: white !important;
+}
+.s-login-modal-header-content > div {
+  color: white !important;
+}
+.s-login-modal-footer {
+  background-color: #1d2028 !important;
 }
 .s-user-menu-trigger {
   background: transparent !important;
