@@ -135,6 +135,64 @@
             "maxLength": 5
         },
         {
+            "id": "arqam_nftkhr",
+            "type": "collection",
+            "format": "collection",
+            "label": "ارقام نفخر به",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "arqam_nftkhr.image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورهه",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": null,
+                    "required": false
+                },
+                {
+                    "id": "arqam_nftkhr.num",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
+                    "label": "رقم",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Input a number between -10.10 and 100.",
+                    "icon": "sicon-hashtag",
+                    "value": null,
+                    "required": false,
+                    "step": 0.1,
+                    "minimum": -10.1,
+                    "maximum": "1000000"
+                },
+                {
+                    "id": "arqam_nftkhr.title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عوان",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": "3"
+        },
+        {
             "type": "boolean",
             "id": "is_more_button_enabled",
             "label": "عرض (زر الكل) في الصفحة الرئيسية",
