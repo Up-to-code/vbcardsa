@@ -167,11 +167,8 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
     </noscript>
     <div class="app-inner flex flex-col min-h-full">
       {% hook 'body:start' %} {% component 'header.header' %} {% block content
-      %} {% endblock %} {% component 'footer.footer' %} {# whatsapp #}
-      
-
-      {# whatsapp #}
-      {% if theme.settings.get('show_whatsapp') %}
+      %} {% endblock %} {% component 'footer.footer' %} {# whatsapp #} {#
+      whatsapp #} {% if theme.settings.get('show_whatsapp') %}
       <div>
         {% if theme.settings.get('whatsapp') %}
         <a
@@ -184,8 +181,6 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
         {% endif %}
       </div>
       {% endif %}
-
-      
     </div>
 
     {% hook 'body:end' %}
@@ -196,7 +191,15 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
     <salla-search></salla-search>
 
     {% if user.type=='guest' %}
-    <salla-login-modal></salla-login-modal>
+    <salla-login-modal is-email-allowed is-email-required is-mobile-allowed>
+      <!-- a slot show before login DOM via email .-->
+      <!-- <div slot="before-login-email">-->
+      <!-- </div>-->
+    
+      <!-- a slot show after login DOM via mobile .-->
+      <!-- <div slot="after-login-mobile">-->
+      <!-- </div>-->
+    </salla-login-modal>
     {% endif %} {% block scripts %}{% endblock %}
   </body>
 </html>

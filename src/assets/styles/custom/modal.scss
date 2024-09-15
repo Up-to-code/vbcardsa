@@ -1,52 +1,70 @@
+/* Modal, Input, and Background Styles */
 .s-modal-body,
 .s-tel-input-control,
 .iti__country-list,
 .s-login-modal-input,
-.mm-ocd__content
-{
+.mm-ocd__content {
   background-color: #1d2028;
   color: white;
   border: #424758;
 }
+
 .s-verify-input {
   background-color: #474f65;
   color: white;
   border: #424758;
   border-radius: 50px;
 }
+
 .s-modal-close {
   background: transparent !important;
 }
+
 .s-modal-title,
-.s-login-modal-label{
+.s-login-modal-label {
   color: white !important;
 }
+
 .s-modal-overlay,
 .mm-ocd__backdrop {
   backdrop-filter: blur(20px); /* Increase the blur value as needed */
-  background: rgba(
-    4,
-    34,
-    79,
-    0.5
-  ); /* Optional: Add a semi-transparent background */
+  background: rgba(4, 34, 79, 0.5); /* Optional: Add a semi-transparent background */
 }
+
+/* Media Queries for smaller screens */
 @media only screen and (max-width: 1024px) {
   .mm-spn.mm-spn--light {
     background-color: #1d2028;
     color: white;
   }
 }
+
+/* Specific input styles */
 .s-login-modal-label {
   color: white !important;
   font-weight: bold;
 }
-.btn {
-  border-radius: 50px !important;
-}
+
 .s-login-modal-input {
   background-color: #474f65;
   color: white;
   border: #424758;
   border-radius: 50px;
+}
+
+/* Button Styles */
+.btn {
+  border-radius: 50px !important;
+}
+
+.btn--primary {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border-radius: 50px !important;
+}
+
+.mt-3 .btn--primary {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border-radius: 50px !important;
 }
