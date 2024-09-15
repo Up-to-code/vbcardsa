@@ -6640,7 +6640,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 }
 .s-modal-title,
 .s-login-modal-label {
-  color: white;
+  color: white !important;
 }
 .s-modal-overlay,
 .mm-ocd__backdrop {
@@ -6653,6 +6653,12 @@ lite-youtube.lyt-activated > .lty-playbtn {
     background-color: #1d2028;
     color: white;
   }
+}
+.s-login-modal-label {
+  color: white !important;
+}
+.s-login-modal-label {
+  font-weight: bold;
 }
 .copyright-text p {
   color: white;
@@ -7007,6 +7013,10 @@ svg {
 .s-user-menu-dropdown:hover {
   z-index: 1000 !important;
 }
+.s-login-modal-label,
+.s-login-modal-title {
+  color: white !important;
+}
 .s-user-menu-trigger {
   background: transparent !important;
 }
@@ -7193,6 +7203,10 @@ salla-slider.details-slider .s-slider-container {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, 1);
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+.sicon-shopping-bag {
+  color: #4a90e2 !important;
+  color: var(--color-primary) !important;
 }
 .before\:text-orange-300::before{content:var(--tw-content);--tw-text-opacity:1;color:rgba(253, 186, 116, 1);color:rgba(253, 186, 116, var(--tw-text-opacity))}
 .first\:rounded-t-md:first-child{border-top-left-radius:0.375rem;border-top-right-radius:0.375rem}

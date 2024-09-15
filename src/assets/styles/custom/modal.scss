@@ -17,8 +17,8 @@
   background: transparent !important;
 }
 .s-modal-title,
-.s-login-modal-label {
-  color: white;
+.s-login-modal-label{
+  color: white !important;
 }
 .s-modal-overlay,
 .mm-ocd__backdrop {
@@ -35,4 +35,8 @@
     background-color: #1d2028;
     color: white;
   }
+}
+.s-login-modal-label {
+  color: white !important;
+  font-weight: bold;
 }

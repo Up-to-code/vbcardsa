@@ -91,8 +91,6 @@
 
 
 
-
-
 .s-button-primary-outline {
     position: relative;
     overflow: hidden;
@@ -177,4 +175,7 @@ salla-slider.details-slider .s-slider-container {
     --tw-bg-opacity: 1;
      background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
     background-color: transparent !important;
+}
+.sicon-shopping-bag{
+     color: var(--color-primary) !important;
 }
