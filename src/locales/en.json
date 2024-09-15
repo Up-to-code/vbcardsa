@@ -5,7 +5,12 @@
     },
     "appBanner": {
       "download_now": "download now"
+    },
+    "footer": {
+      "pages_links": "Pages Links",
+      "client_links": "Client services"
     }
+
   },
   
   "pages": {

@@ -185,26 +185,52 @@
             </salla-button>
                 </div>
             </div>
-            <div class="   flex justify-between z-50 w-[80%] mx-[10%]  md:hidden ">
-                <salla-button
-                class="btn--wishlist animated"
-                data-id="{{ product.id }}"
-                onclick="salla.wishlist.toggle({{ product.id }})"
-                shape="icon"
-                fill="outline"
-                color="light">
-            <i class="sicon-heart"></i>
-        </salla-button>
 
-        <salla-button
-                class="btn--share animated"
-                onclick="salla.share.popup('{{ product.id }}')"
-                shape="icon"
-                fill="outline"
-                color="light">
-            <i class="sicon-share-alt"></i>
-        </salla-button>
+
+         
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <div class="flex justify-between items-center z-50 w-[80%] mx-auto md:hidden relative top-[-50px]">
+                <salla-button
+                    class="btn--wishlist animated"
+                    data-id="{{ product.id }}"
+                    onclick="salla.wishlist.toggle({{ product.id }})"
+                    shape="icon"
+                    fill="outline"
+                    color="light"
+                >
+                    <i class="sicon-heart"></i>
+                </salla-button>
+            
+                <salla-button
+                    class="btn--share animated"
+                    onclick="salla.share.popup('{{ product.id }}')"
+                    shape="icon"
+                    fill="outline"
+                    color="light"
+                >
+                    <i class="sicon-share-alt"></i>
+                </salla-button>
             </div>
+            
 
 
             <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
@@ -212,8 +238,8 @@
                 {% hook 'product:single.description.start' %}
 
 
- <div class="glass-effect bg-opacity-20 backdrop-filter backdrop-blur-lg bg-gradient-to-r  rounded-lg p-6 shadow-xl text-white">
-                {% if product.brand.name %}
+                <div class="glass-effect">
+                    {% if product.brand.name %}
                     <div class="product-brand mb-4 w-14">
                         <a class="brand-logo hover:opacity-80 transition-opacity" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
                             <img width="100%" height="100%" class="max-h-full object-contain"

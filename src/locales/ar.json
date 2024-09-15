@@ -5,6 +5,10 @@
     },
     "appBanner": {
       "download_now": "حمله الان"
+    },
+    "footer": {
+      "pages_links": "روابط الصفحات",
+      "client_links": "خدمات العملاء"
     }
   },
   "pages": {

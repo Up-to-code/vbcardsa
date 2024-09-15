@@ -1,6 +1,19 @@
 .copyright-text p {
   color: white;
 }
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  background: #1d2028;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-d));
+  border-radius: 10px;
+}
 ////////////////
 .bg-white {
   background-color: #1d2028;
@@ -316,7 +329,7 @@ svg {
 }
 .swiper-3d .swiper-wrapper, .swiper-3d .swiper-slide, .swiper-3d .swiper-slide-shadow, .swiper-3d .swiper-slide-shadow-left, .swiper-3d .swiper-slide-shadow-right, .swiper-3d .swiper-slide-shadow-top, .swiper-3d .swiper-slide-shadow-bottom, .swiper-3d .swiper-cube-shadow{
   background: transparent !important;
-  z-index: 100;
+  
 }
 .s-social-link,
 .s-social-link::after,
@@ -355,4 +368,30 @@ svg {
 }
 .carousel-slider .s-slider-block__title-nav {
   display: none;
+}
+ .flatpickr-monthDropdown-month{
+   color: black !important;
+ }
+ .flatpickr-innerContainer{
+   background-color: #1d2028 !important;
+ }
+ .flatpickr-day,
+ .s-datetime-picker-input,
+ .profile-header .breadcrumbs a,
+ .s-breadcrumb-primary-reverse li{
+   color: white !important;
+ }
+ .flatpickr-day:hover{
+  color: var(--color-primary) !important;
+  background-color: #424758 !important;
+}
+.container > div > nav  {
+  background-color: #1d2028;
+}
+.s-orders-table-head{
+  background-color: transparent;
+}
+.s-user-menu-dropdown:hover,
+.s-user-menu-dropdown:hover  {
+  z-index: 1000 !important;
 }

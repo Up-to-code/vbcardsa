@@ -13,31 +13,36 @@
         <div class="flex items-start flex-col lg:flex-row ">
             <nav aria-label="Sidebar"
                  class="shrink-0 lg:sticky top-24 lg:-mt-28 lg:shadow-default rounded-md lg:bg-white w-full lg:w-72 rtl:lg:ml-8 ltr:lg:mr-8 lg:pt-8 lg:pb-11 sidebar space-y-px">
-
-                {% if is_page('customer.profile') %}
+                 <div class="flex flex-col items-center justify-center">
+                    {% if is_page('customer.profile') %}
                     <div class="text-center md:mb-9">
-                        <div class="h-20 w-20 m-auto avatar-wrap bg-gray-100 rounded-full">
+                        <div class="h-20 w-20 m-auto avatar-wrap bg-gray-200 rounded-full shadow-lg">
                             <salla-file-upload profile-image value="{{ user.avatar }}">
-                                <span class='avatar-placeholder flex justify-center items-center flex-col'>
-                                    <span class='sicon-user'></span>
-                                    <span class='text'>{{ trans('common.uploader.choose_suitable_picture') }}</span>
+                                <span class='avatar-placeholder flex justify-center items-center flex-col bg-blue-600 rounded-full h-full w-full'>
+                                    <span class='sicon-user text-white text-2xl'></span>
+                                    <span class='text-sm text-white mt-2'>{{ trans('common.uploader.choose_suitable_picture') }}</span>
                                 </span>
                             </salla-file-upload>
                         </div>
                     </div>
-                {% endif %}
+                    {% endif %}
+                    <p class="text-center font-bold mt-4">
+                        {{ user.first_name }} {{ user.last_name }}
+                    </p>
+                </div>
+                
 
                 <div class="hidden lg:block">
                     <salla-user-menu inline></salla-user-menu>
                 </div>
             </nav>
             <div class="main-content w-full flex-1 lg:pt-10 ">
-                {% block inner_title %}<h1 class="font-bold text-lg text-center sm:text-start mb-2">{{ page.title }}{% endblock %}
+                {# {% block inner_title %}<h1 class="font-bold text-lg text-center sm:text-start mb-2">{{ page.title }}{% endblock %} #}
                 
 
-                  {% if is_current_url('order') and order.source is same as('buy_as_gift') %}
+                  {# {% if is_current_url('order') and order.source is same as('buy_as_gift') %}
                     <span class="inline-block text-primary mx-2"><i class="sicon-gift-sharing"></i>&nbsp;{{ trans('pages.orders.gift_tag') }}</span>
-                  {% endif %}
+                  {% endif %} #}
 
                 </h1>
                 {#
