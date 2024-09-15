@@ -37,6 +37,21 @@
             "selected": false
         },
         {
+            "id": "coupon_code",
+            "type": "string",
+            "format": "text",
+            "label": "coupon code",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": null,
+            "multilanguage": false,
+            "required": false,
+            "minLength": "3",
+            "maxLength": "12"
+        },
+        {
             "id": "show_whatsapp",
             "type": "boolean",
             "format": "switch",
