@@ -1176,6 +1176,13 @@
                     "maxLength": 5
                 }
             ]
+        },
+        {
+            "key": "1abb5c20-e5a5-4cab-b9d9-aa19441857fc",
+            "title": "تصنيفات المنتجات",
+            "icon": "sicon-store",
+            "path": "Products_types",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
