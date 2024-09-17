@@ -1184,21 +1184,6 @@
             "path": "Products_types",
             "fields": [
                 {
-                    "id": "title",
-                    "type": "string",
-                    "format": "text",
-                    "label": "عنوان",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": null,
-                    "multilanguage": false,
-                    "required": false,
-                    "minLength": "3",
-                    "maxLength": 30
-                },
-                {
                     "id": "products_types",
                     "type": "collection",
                     "format": "collection",
