@@ -138,7 +138,7 @@
             "id": "arqam_nftkhr",
             "type": "collection",
             "format": "collection",
-            "label": "ارقام نفخر به",
+            "label": "ارقام نفخر بها",
             "description": null,
             "labelHTML": null,
             "item_label": null,
@@ -264,7 +264,7 @@
             "format": "switch",
             "required": false,
             "value": true,
-            "selected": false
+            "selected": true
         },
         {
             "type": "static",
@@ -339,7 +339,7 @@
             "format": "switch",
             "required": false,
             "value": false,
-            "selected": false
+            "selected": true
         }
     ],
     "components": [
