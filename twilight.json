@@ -1180,7 +1180,7 @@
         {
             "key": "1abb5c20-e5a5-4cab-b9d9-aa19441857fc",
             "title": "تصنيفات المنتجات",
-            "icon": "sicon-store",
+            "icon": "sicon-table",
             "path": "Products_types",
             "fields": []
         }
