@@ -720,6 +720,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .rounded-t-md{border-top-left-radius:0.375rem;border-top-right-radius:0.375rem}
 .border{border-width:1px}
 .border-2{border-width:2px}
+.border-4{border-width:4px}
 .border-b{border-bottom-width:1px}
 .border-b-2{border-bottom-width:2px}
 .border-b-\[1px\]{border-bottom-width:1px}
