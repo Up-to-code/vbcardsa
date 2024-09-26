@@ -398,3 +398,15 @@ svg {
 .slide--cat-entry{
   border-color: transparent !important;
 }
+.s-product-card-entry{
+  max-width: max-content !important;
+}
+.s-products-list-horizontal-cards {
+
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+ 
+gap: 1rem;
+
+}
