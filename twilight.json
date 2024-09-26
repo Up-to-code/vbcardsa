@@ -4,7 +4,7 @@
         "en": "vbcardsa"
     },
     "repository": "https://github.com/Up-to-code/vbcardsa",
-    "author_email": "133324agh@gmail.com",
+    "author_email": "support@vbcardsa.com",
     "features": [
         "mega-menu",
         "fonts",
@@ -1228,9 +1228,9 @@
             ]
         }
     ],
-    "support_url": "https://example.com",
+    "support_url": "https://vbcardsa.com",
     "description": {
-        "ar": "",
-        "en": ""
+        "ar": null,
+        "en": null
     }
 }
