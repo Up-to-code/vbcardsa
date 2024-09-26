@@ -57,8 +57,13 @@ theme.settings.get('important_links') %}
             </a>
           </div>
 
-          {# Cart and user menu #}
+          {# Cart and user me  nu #}
           <div class="flex items-center justify-end lg:flex-1 lg:ml-4">
+         {# search #}
+         <button class="header-btn hover:bg-gray-700 transition-colors rounded-full p-2 hidden md:block" aria-label="search-icon" onclick="salla.event.dispatch('search::open')">
+          <i class="sicon-search text-white text-[25px]"></i>
+        </button>
+
             <div class="relative mr-4">
               <salla-cart-summary class="header-cart no-summary hydrated">
                 <img
@@ -74,6 +79,7 @@ theme.settings.get('important_links') %}
                   {{ cart.items_count }}
                 </span>
               </salla-cart-summary>
+              
             </div> 
 
 
