@@ -216,3 +216,6 @@ You can also simply open an issue with the tag "enhancement". Don't forget to gi
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Project links
+
+[Source](https://github.com/Up-to-code/vbcardsa) · [Issues](https://github.com/Up-to-code/vbcardsa/issues) · [Public project directory](https://github.com/qentrah/.github/blob/main/profile/PROJECTS.md)
